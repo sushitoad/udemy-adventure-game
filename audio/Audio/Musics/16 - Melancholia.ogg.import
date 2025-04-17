@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://qw0h3v1tb1mw"
+path="res://.godot/imported/16 - Melancholia.ogg-94759181fe6c0c37356ab9e7bd5423ef.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/Audio/Musics/16 - Melancholia.ogg"
+dest_files=["res://.godot/imported/16 - Melancholia.ogg-94759181fe6c0c37356ab9e7bd5423ef.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

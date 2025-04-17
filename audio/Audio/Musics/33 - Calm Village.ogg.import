@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ca44or7ha0wyt"
+path="res://.godot/imported/33 - Calm Village.ogg-fd48114ed140e0b408fbe1ce05d2d65b.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/Audio/Musics/33 - Calm Village.ogg"
+dest_files=["res://.godot/imported/33 - Calm Village.ogg-fd48114ed140e0b408fbe1ce05d2d65b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
