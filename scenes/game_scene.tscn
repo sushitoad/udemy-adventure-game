@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvpcuu1ggldet"]
+
+[ext_resource type="PackedScene" uid="uid://bsi5sx6qtshm1" path="res://scenes/player.tscn" id="1_w5aja"]
+[ext_resource type="Texture2D" uid="uid://byc3ghl642at3" path="res://art/Ninja Adventure - Asset Pack/Items/Treasure/BigTreasureChest.png" id="2_y3j0m"]
+[ext_resource type="Texture2D" uid="uid://c6r6wui3vil62" path="res://art/Ninja Adventure - Asset Pack/Items/Food/Octopus.png" id="3_rurhu"]
+[ext_resource type="Texture2D" uid="uid://b3mvkfeke5eq1" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="4_kk2rg"]
+[ext_resource type="Texture2D" uid="uid://5f2vr3le8p3c" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Animated/Flower/SpriteSheet16x16.png" id="5_b5spy"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_w5aja")]
+motion_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="BigTreasureChest" type="Sprite2D" parent="."]
+position = Vector2(287, 96)
+texture = ExtResource("2_y3j0m")
+
+[node name="Octopus" type="Sprite2D" parent="."]
+position = Vector2(-29, 59)
+texture = ExtResource("3_rurhu")
+
+[node name="SpriteSheet16x16" type="Sprite2D" parent="."]
+position = Vector2(134, -46)
+texture = ExtResource("4_kk2rg")
+
+[node name="SpriteSheet16x17" type="Sprite2D" parent="."]
+position = Vector2(70, 59)
+texture = ExtResource("5_b5spy")
