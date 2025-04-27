@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dvpcuu1ggldet"]
+[gd_scene load_steps=14 format=4 uid="uid://dvpcuu1ggldet"]
 
 [ext_resource type="Texture2D" uid="uid://5ujkbfsovvqs" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_rurhu"]
 [ext_resource type="PackedScene" uid="uid://bsi5sx6qtshm1" path="res://scenes/player.tscn" id="1_w5aja"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c6r6wui3vil62" path="res://art/Ninja Adventure - Asset Pack/Items/Food/Octopus.png" id="3_rurhu"]
 [ext_resource type="Texture2D" uid="uid://b3mvkfeke5eq1" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="4_kk2rg"]
 [ext_resource type="Texture2D" uid="uid://5f2vr3le8p3c" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Animated/Flower/SpriteSheet16x16.png" id="5_b5spy"]
+[ext_resource type="Script" uid="uid://c20h5yjs0uqv" path="res://scripts/scene_entrance.gd" id="8_b5spy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk2rg"]
 texture = ExtResource("1_rurhu")
@@ -765,6 +766,8 @@ texture = ExtResource("2_kk2rg")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_b5spy")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk2rg"]
+
 [node name="GameScene" type="Node2D"]
 
 [node name="GrassLayer" type="TileMapLayer" parent="."]
@@ -781,7 +784,7 @@ tile_map_data = PackedByteArray("AAD1////AQACAAAAAAD5//v/AQAAAAIAAAAGAPz/AQAAAAI
 tile_set = SubResource("TileSet_utbpp")
 
 [node name="Player" parent="ObstacleLayer" instance=ExtResource("1_w5aja")]
-position = Vector2(-201, -41)
+position = Vector2(1, -23)
 motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="ObstacleLayer/Player"]
@@ -806,3 +809,12 @@ texture = ExtResource("4_kk2rg")
 [node name="SpriteSheet16x17" type="Sprite2D" parent="."]
 position = Vector2(-35, -52)
 texture = ExtResource("5_b5spy")
+
+[node name="SceneEntrance" type="Area2D" parent="."]
+script = ExtResource("8_b5spy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneEntrance"]
+position = Vector2(54, -22)
+shape = SubResource("RectangleShape2D_kk2rg")
+
+[connection signal="body_entered" from="SceneEntrance" to="SceneEntrance" method="_on_body_entered"]
