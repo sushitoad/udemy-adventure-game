@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=4 uid="uid://dvpcuu1ggldet"]
+[gd_scene load_steps=15 format=4 uid="uid://dvpcuu1ggldet"]
 
 [ext_resource type="Texture2D" uid="uid://5ujkbfsovvqs" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_rurhu"]
 [ext_resource type="PackedScene" uid="uid://bsi5sx6qtshm1" path="res://scenes/player.tscn" id="1_w5aja"]
 [ext_resource type="Texture2D" uid="uid://dgncsfo8w5rjw" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="2_kk2rg"]
+[ext_resource type="Texture2D" uid="uid://bxiw6wnq1in45" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetReliefDetail.png" id="2_mw25s"]
 [ext_resource type="Texture2D" uid="uid://byc3ghl642at3" path="res://art/Ninja Adventure - Asset Pack/Items/Treasure/BigTreasureChest.png" id="2_y3j0m"]
 [ext_resource type="Texture2D" uid="uid://c6r6wui3vil62" path="res://art/Ninja Adventure - Asset Pack/Items/Food/Octopus.png" id="3_rurhu"]
 [ext_resource type="Texture2D" uid="uid://b3mvkfeke5eq1" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="4_kk2rg"]
 [ext_resource type="Texture2D" uid="uid://5f2vr3le8p3c" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Animated/Flower/SpriteSheet16x16.png" id="5_b5spy"]
-[ext_resource type="Script" uid="uid://c20h5yjs0uqv" path="res://scripts/scene_entrance.gd" id="8_b5spy"]
+[ext_resource type="PackedScene" uid="uid://dekpgewfkrfg0" path="res://scenes/scene_entrance.tscn" id="9_utbpp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk2rg"]
 texture = ExtResource("1_rurhu")
@@ -751,6 +752,13 @@ terrain_set_0/terrain_0/name = "Forest Terrain"
 terrain_set_0/terrain_0/color = Color(0.727408, 0, 0.118754, 1)
 sources/0 = SubResource("TileSetAtlasSource_kk2rg")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tcjrq"]
+texture = ExtResource("2_mw25s")
+0:7/size_in_atlas = Vector2i(3, 3)
+0:7/0 = 0
+0:7/0/texture_origin = Vector2i(0, 10)
+0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(22, 2, 10, 2, 8, -12, -8, -12, -10, 2, -20, 2, -18, -18, -10, -20, 12, -20, 18, -18)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b5spy"]
 texture = ExtResource("2_kk2rg")
 2:0/size_in_atlas = Vector2i(2, 2)
@@ -765,8 +773,7 @@ texture = ExtResource("2_kk2rg")
 [sub_resource type="TileSet" id="TileSet_utbpp"]
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_b5spy")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk2rg"]
+sources/0 = SubResource("TileSetAtlasSource_tcjrq")
 
 [node name="GameScene" type="Node2D"]
 
@@ -780,11 +787,11 @@ tile_set = SubResource("TileSet_b5spy")
 
 [node name="ObstacleLayer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD1////AQACAAAAAAD5//v/AQAAAAIAAAAGAPz/AQAAAAIAAAAHAAEAAQAAAAIAAAD8/wMAAQAAAAIAAAD5/wQAAQAAAAIAAAD9/wkAAQAAAAIAAAD4/wcAAQAAAAIAAAAHAAYAAQAAAAIAAAANAAUAAQAAAAIAAAAPAAcAAQAAAAIAAAALAAYAAQAAAAIAAAAMAAgAAQAAAAIAAAAQAAkAAQAAAAIAAAANAAoAAQAAAAIAAAASAAsAAQAAAAIAAAASAAQAAQAAAAIAAAAVAAcAAQAAAAIAAAAPAAMAAQAAAAIAAAD2/woAAQAAAAIAAAD1/wYAAQAAAAIAAAD2/wMAAQAAAAIAAADy/wIAAQAAAAIAAADy/wgAAQAAAAIAAAAMAPf/AQAAAAIAAAAQAPz/AQAAAAIAAAD9//j/AQAAAAIAAADz//X/AQAAAAIAAADz//j/AQAAAAIAAAD4//b/AQAAAAIAAAAVAAkAAQACAAAAAAAWAAsAAQACAAAAAAAIAAsAAQACAAAAAAAHAAkAAQACAAAAAAAJAAMAAQACAAAAAAAMAAIAAQACAAAAAAAWAAMAAQACAAAAAAAUAAIAAQACAAAAAAD//wYAAQACAAAAAAAAAAoAAQACAAAAAAD7/wsAAQACAAAAAADy/wsAAQACAAAAAADy/wQAAQACAAAAAAD5/wEAAQACAAAAAAAAAAEAAQACAAAAAAAPAPb/AQACAAAAAAAJAPv/AQACAAAAAAASAP3/AQACAAAAAAAWAPz/AQACAAAAAAAUAPb/AQACAAAAAAAAAPv/AQACAAAAAAD7//T/AQACAAAAAAD2//T/AQACAAAAAADy//r/AQACAAAAAAAFAPb/AQACAAAAAAAGAPj/AQACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD1////AQACAAAAAAD5//v/AQAAAAIAAAAGAPz/AQAAAAIAAAAHAAEAAQAAAAIAAAD8/wMAAQAAAAIAAAD5/wQAAQAAAAIAAAD9/wkAAQAAAAIAAAD4/wcAAQAAAAIAAAAHAAYAAQAAAAIAAAANAAUAAQAAAAIAAAAPAAcAAQAAAAIAAAALAAYAAQAAAAIAAAAMAAgAAQAAAAIAAAAQAAkAAQAAAAIAAAANAAoAAQAAAAIAAAASAAsAAQAAAAIAAAASAAQAAQAAAAIAAAAVAAcAAQAAAAIAAAAPAAMAAQAAAAIAAAD2/woAAQAAAAIAAAD1/wYAAQAAAAIAAAD2/wMAAQAAAAIAAADy/wIAAQAAAAIAAADy/wgAAQAAAAIAAAAMAPf/AQAAAAIAAAAQAPz/AQAAAAIAAAD9//j/AQAAAAIAAADz//X/AQAAAAIAAADz//j/AQAAAAIAAAD4//b/AQAAAAIAAAAVAAkAAQACAAAAAAAWAAsAAQACAAAAAAAIAAsAAQACAAAAAAAHAAkAAQACAAAAAAAJAAMAAQACAAAAAAAMAAIAAQACAAAAAAAWAAMAAQACAAAAAAAUAAIAAQACAAAAAAD//wYAAQACAAAAAAAAAAoAAQACAAAAAAD7/wsAAQACAAAAAADy/wsAAQACAAAAAADy/wQAAQACAAAAAAD5/wEAAQACAAAAAAAAAAEAAQACAAAAAAAPAPb/AQACAAAAAAAJAPv/AQACAAAAAAASAP3/AQACAAAAAAAWAPz/AQACAAAAAAAUAPb/AQACAAAAAAAAAPv/AQACAAAAAAD7//T/AQACAAAAAAD2//T/AQACAAAAAADy//r/AQACAAAAAAAFAPb/AQACAAAAAAAGAPj/AQACAAAAAAACAPT/AAAAAAcAAAA=")
 tile_set = SubResource("TileSet_utbpp")
 
 [node name="Player" parent="ObstacleLayer" instance=ExtResource("1_w5aja")]
-position = Vector2(1, -23)
+position = Vector2(-38, -91)
 motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="ObstacleLayer/Player"]
@@ -795,6 +802,7 @@ drag_vertical_enabled = true
 editor_draw_drag_margin = true
 
 [node name="BigTreasureChest" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(38, -185)
 texture = ExtResource("2_y3j0m")
 
@@ -810,11 +818,6 @@ texture = ExtResource("4_kk2rg")
 position = Vector2(-35, -52)
 texture = ExtResource("5_b5spy")
 
-[node name="SceneEntrance" type="Area2D" parent="."]
-script = ExtResource("8_b5spy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneEntrance"]
-position = Vector2(54, -22)
-shape = SubResource("RectangleShape2D_kk2rg")
-
-[connection signal="body_entered" from="SceneEntrance" to="SceneEntrance" method="_on_body_entered"]
+[node name="SceneEntrance" parent="." instance=ExtResource("9_utbpp")]
+position = Vector2(40, -189)
+sceneToLoad = "res://scenes/cave_scene.tscn"

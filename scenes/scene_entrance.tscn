@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dekpgewfkrfg0"]
+
+[ext_resource type="Script" uid="uid://c20h5yjs0uqv" path="res://scripts/scene_entrance.gd" id="1_qnoiy"]
+[ext_resource type="PackedScene" uid="uid://dv0sgxv8mqdta" path="res://scenes/cave_scene.tscn" id="2_es7dh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk2rg"]
+size = Vector2(16, 16)
+
+[node name="SceneEntrance" type="Area2D"]
+script = ExtResource("1_qnoiy")
+sceneToLoad = ExtResource("2_es7dh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kk2rg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

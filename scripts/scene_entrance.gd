@@ -1,9 +1,10 @@
 extends Area2D
 
-@export var sceneToLoad: PackedScene = null
+@export var sceneToLoad: String
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("entered new scene!")
-	if sceneToLoad != null:
-		get_tree().change_scene_to_packed(sceneToLoad)
+	if body is Player:
+		print("entered new scene!")
+		if sceneToLoad != null:
+			get_tree().change_scene_to_file.call_deferred(sceneToLoad)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv0sgxv8mqdta"]
+
+[ext_resource type="PackedScene" uid="uid://bsi5sx6qtshm1" path="res://scenes/player.tscn" id="1_5u6jg"]
+[ext_resource type="PackedScene" uid="uid://dekpgewfkrfg0" path="res://scenes/scene_entrance.tscn" id="1_ucyxh"]
+
+[node name="CaveScene" type="Node2D"]
+
+[node name="SceneEntrance" parent="." instance=ExtResource("1_ucyxh")]
+position = Vector2(0, 46)
+sceneToLoad = "res://scenes/game_scene.tscn"
+
+[node name="Player" parent="." instance=ExtResource("1_5u6jg")]
+motion_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+position_smoothing_speed = 1.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
