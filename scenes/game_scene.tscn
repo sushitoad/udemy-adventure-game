@@ -819,5 +819,5 @@ position = Vector2(-35, -52)
 texture = ExtResource("5_b5spy")
 
 [node name="SceneEntrance" parent="." instance=ExtResource("9_utbpp")]
-position = Vector2(40, -189)
+position = Vector2(40, -192)
 sceneToLoad = "res://scenes/cave_scene.tscn"
