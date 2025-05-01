@@ -18,3 +18,4 @@ editor_draw_drag_margin = true
 [node name="SceneEntrance" parent="." instance=ExtResource("2_k0yl6")]
 position = Vector2(0, 50)
 sceneToLoad = "res://scenes/game_scene.tscn"
+spawnPoint = Vector2(39, -169)

@@ -791,7 +791,7 @@ tile_map_data = PackedByteArray("AAD1////AQACAAAAAAD5//v/AQAAAAIAAAAGAPz/AQAAAAI
 tile_set = SubResource("TileSet_utbpp")
 
 [node name="Player" parent="ObstacleLayer" instance=ExtResource("1_w5aja")]
-position = Vector2(-38, -91)
+position = Vector2(-41, -85)
 motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="ObstacleLayer/Player"]

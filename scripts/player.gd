@@ -7,7 +7,7 @@ class_name Player
 @export var HP: int = 10
 
 func _ready() -> void:
-	pass
+	position = SceneManager.spawnPoint
 
 func _process(delta: float) -> void:
 	
