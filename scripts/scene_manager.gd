@@ -1,6 +1,7 @@
 extends Node2D
 
 var spawnPoint: Vector2
+var spawnIndex: int = 0
 
 
 func _ready() -> void:

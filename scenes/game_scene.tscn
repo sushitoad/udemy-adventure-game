@@ -793,6 +793,7 @@ tile_set = SubResource("TileSet_utbpp")
 [node name="Player" parent="ObstacleLayer" instance=ExtResource("1_w5aja")]
 position = Vector2(-41, -85)
 motion_mode = 1
+spawnPoints = PackedVector2Array(-42, -84, 41, -166)
 
 [node name="Camera2D" type="Camera2D" parent="ObstacleLayer/Player"]
 zoom = Vector2(4, 4)

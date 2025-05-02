@@ -5,9 +5,11 @@ class_name Player
 
 @export var moveSpeed: float = 100
 @export var HP: int = 10
+@export var spawnPoints: PackedVector2Array
 
 func _ready() -> void:
-	position = SceneManager.spawnPoint
+	#position = SceneManager.spawnPoint
+	position = spawnPoints[SceneManager.spawnIndex]
 
 func _process(delta: float) -> void:
 	
