@@ -6,6 +6,7 @@ class_name Player
 @export var moveSpeed: float = 100
 @export var HP: int = 10
 @export var spawnPoints: PackedVector2Array
+@export var pushStrength: float = 80
 
 func _ready() -> void:
 	#position = SceneManager.spawnPoint
@@ -27,5 +28,13 @@ func _process(delta: float) -> void:
 		animSprite.play("moveUp")
 	else:
 		animSprite.stop()
+		
+	var collision: KinematicCollision2D = get_last_slide_collision()
+	if collision:
+		var colliderNode = collision.get_collider()
+		if colliderNode is RigidBody2D:
+			var collisionNormal: Vector2 = collision.get_normal()
+			colliderNode.apply_central_force(-collisionNormal * pushStrength)
+		
 	move_and_slide()
 	
