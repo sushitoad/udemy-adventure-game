@@ -39,6 +39,11 @@ folder_colors={
 "res://scripts/": "blue"
 }
 
+[global_group]
+
+wall="A Wall TilemapLayer"
+pushable="a Rigidbody2D that the player may push"
+
 [input]
 
 Quit={
