@@ -12,7 +12,7 @@ func _ready() -> void:
 	#position = SceneManager.spawnPoint
 	position = spawnPoints[SceneManager.spawnIndex]
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().quit()
