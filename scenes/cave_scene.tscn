@@ -810,12 +810,20 @@ tile_set = SubResource("TileSet_w0m8c")
 
 [node name="locked_door" parent="WallLayer" instance=ExtResource("3_1y8xl")]
 position = Vector2(-16, -62)
+buttonsToOpen = 2
 
 [node name="PuzzleButton" parent="." instance=ExtResource("6_4xk0p")]
-position = Vector2(-16, 23)
+position = Vector2(68, 23)
+
+[node name="PuzzleButton2" parent="." instance=ExtResource("6_4xk0p")]
+position = Vector2(6, 23)
 
 [node name="Block" parent="." instance=ExtResource("5_w0m8c")]
 position = Vector2(24, 40)
+gravity_scale = 0.0
+
+[node name="Block2" parent="." instance=ExtResource("5_w0m8c")]
+position = Vector2(6, -8)
 gravity_scale = 0.0
 
 [node name="Player" parent="." instance=ExtResource("1_5u6jg")]
@@ -838,3 +846,5 @@ spawnIndex = 1
 
 [connection signal="pressed" from="PuzzleButton" to="WallLayer/locked_door" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="WallLayer/locked_door" method="_on_puzzle_button_unpressed"]
+[connection signal="pressed" from="PuzzleButton2" to="WallLayer/locked_door" method="_on_puzzle_button_pressed"]
+[connection signal="unpressed" from="PuzzleButton2" to="WallLayer/locked_door" method="_on_puzzle_button_unpressed"]
