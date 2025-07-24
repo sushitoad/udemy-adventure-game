@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dv0sgxv8mqdta"]
+[gd_scene load_steps=14 format=4 uid="uid://dv0sgxv8mqdta"]
 
 [ext_resource type="PackedScene" uid="uid://bsi5sx6qtshm1" path="res://scenes/player.tscn" id="1_5u6jg"]
 [ext_resource type="Texture2D" uid="uid://bprwsdcu1jdru" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/Interior/TilesetWallSimple.png" id="1_ucyxh"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://1j1kcmnr735j" path="res://scenes/block.tscn" id="5_w0m8c"]
 [ext_resource type="PackedScene" uid="uid://ein0iksjtdt7" path="res://scenes/puzzle_button.tscn" id="6_4xk0p"]
 [ext_resource type="PackedScene" uid="uid://o0s40epnudpc" path="res://scenes/ice_block.tscn" id="8_nnjfw"]
+[ext_resource type="PackedScene" uid="uid://44idkop27w4d" path="res://scenes/single_use_puzzle_button.tscn" id="9_w3ser"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w0m8c"]
 texture = ExtResource("1_wb8t5")
@@ -818,6 +819,9 @@ position = Vector2(68, 23)
 
 [node name="PuzzleButton2" parent="." instance=ExtResource("6_4xk0p")]
 position = Vector2(6, 23)
+
+[node name="PuzzleButton3" parent="." instance=ExtResource("9_w3ser")]
+position = Vector2(-73, 35)
 
 [node name="Block" parent="." instance=ExtResource("5_w0m8c")]
 position = Vector2(24, 40)

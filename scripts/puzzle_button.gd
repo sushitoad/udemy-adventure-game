@@ -1,6 +1,7 @@
 extends Area2D
 
 var bodiesOnTop: int = 0
+@export var isSingleUse: bool = false
 signal pressed
 signal unpressed
 
@@ -12,6 +13,8 @@ func _on_body_entered(body: Node2D) -> void:
 		#print("button pressed")
 
 func _on_body_exited(body: Node2D) -> void:
+	if isSingleUse:
+		return
 	bodiesOnTop -= 1
 	if bodiesOnTop == 0:
 		unpressed.emit()
