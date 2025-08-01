@@ -13,9 +13,13 @@ func _ready() -> void:
 	position = spawnPoints[SceneManager.spawnIndex]
 
 func _physics_process(delta: float) -> void:
-	
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().quit()
+	movePlayer()
+	pushBlocks()
+	move_and_slide()
+	
+func movePlayer():
 	var moveVector: Vector2 = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 	velocity = moveVector * moveSpeed
 	if velocity.x > 0:
@@ -28,13 +32,11 @@ func _physics_process(delta: float) -> void:
 		animSprite.play("moveUp")
 	else:
 		animSprite.stop()
-		
+
+func pushBlocks():
 	var collision: KinematicCollision2D = get_last_slide_collision()
 	if collision:
 		var colliderNode = collision.get_collider()
 		if colliderNode.is_in_group("pushable"):
 			var collisionNormal: Vector2 = collision.get_normal()
 			colliderNode.apply_central_force(-collisionNormal * pushStrength)
-		
-	move_and_slide()
-	
