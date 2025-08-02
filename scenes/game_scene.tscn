@@ -1,14 +1,11 @@
-[gd_scene load_steps=22 format=4 uid="uid://dvpcuu1ggldet"]
+[gd_scene load_steps=19 format=4 uid="uid://dvpcuu1ggldet"]
 
 [ext_resource type="Texture2D" uid="uid://5ujkbfsovvqs" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_rurhu"]
 [ext_resource type="PackedScene" uid="uid://bsi5sx6qtshm1" path="res://scenes/player.tscn" id="1_w5aja"]
 [ext_resource type="Texture2D" uid="uid://dgncsfo8w5rjw" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="2_kk2rg"]
 [ext_resource type="Texture2D" uid="uid://bxiw6wnq1in45" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetReliefDetail.png" id="2_mw25s"]
 [ext_resource type="PackedScene" uid="uid://ein0iksjtdt7" path="res://scenes/puzzle_button.tscn" id="2_tcjrq"]
-[ext_resource type="Texture2D" uid="uid://byc3ghl642at3" path="res://art/Ninja Adventure - Asset Pack/Items/Treasure/BigTreasureChest.png" id="2_y3j0m"]
 [ext_resource type="PackedScene" uid="uid://1j1kcmnr735j" path="res://scenes/block.tscn" id="3_rvs2r"]
-[ext_resource type="Texture2D" uid="uid://b3mvkfeke5eq1" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="4_kk2rg"]
-[ext_resource type="Texture2D" uid="uid://5f2vr3le8p3c" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Animated/Flower/SpriteSheet16x16.png" id="5_b5spy"]
 [ext_resource type="PackedScene" uid="uid://b37q6nyscea4p" path="res://scenes/locked_door.tscn" id="7_rvs2r"]
 [ext_resource type="PackedScene" uid="uid://4pa4rlpnrynt" path="res://scenes/npc.tscn" id="9_rvs2r"]
 [ext_resource type="PackedScene" uid="uid://dekpgewfkrfg0" path="res://scenes/scene_entrance.tscn" id="9_utbpp"]
@@ -826,21 +823,8 @@ editor_draw_drag_margin = true
 [node name="locked_door" parent="." instance=ExtResource("7_rvs2r")]
 position = Vector2(40, -187)
 
-[node name="BigTreasureChest" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(38, -185)
-texture = ExtResource("2_y3j0m")
-
 [node name="NPC" parent="." instance=ExtResource("9_rvs2r")]
 position = Vector2(-9, -58)
-
-[node name="SpriteSheet16x16" type="Sprite2D" parent="."]
-position = Vector2(179, 5)
-texture = ExtResource("4_kk2rg")
-
-[node name="SpriteSheet16x17" type="Sprite2D" parent="."]
-position = Vector2(-35, -52)
-texture = ExtResource("5_b5spy")
 
 [node name="SceneEntrance" parent="." instance=ExtResource("9_utbpp")]
 position = Vector2(40, -192)
