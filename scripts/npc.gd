@@ -9,5 +9,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact"):
 		var distance = transform.origin.distance_to(player.transform.origin)
+		#print(distance)
 		if distance <= talkDistance:
 			print("Hello traveler!")
