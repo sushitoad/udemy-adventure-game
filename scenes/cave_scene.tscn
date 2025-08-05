@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dv0sgxv8mqdta"]
+[gd_scene load_steps=15 format=4 uid="uid://dv0sgxv8mqdta"]
 
 [ext_resource type="PackedScene" uid="uid://bsi5sx6qtshm1" path="res://scenes/player.tscn" id="1_5u6jg"]
 [ext_resource type="Texture2D" uid="uid://bprwsdcu1jdru" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/Interior/TilesetWallSimple.png" id="1_ucyxh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b37q6nyscea4p" path="res://scenes/locked_door.tscn" id="3_1y8xl"]
 [ext_resource type="PackedScene" uid="uid://1j1kcmnr735j" path="res://scenes/block.tscn" id="5_w0m8c"]
 [ext_resource type="PackedScene" uid="uid://ein0iksjtdt7" path="res://scenes/puzzle_button.tscn" id="6_4xk0p"]
+[ext_resource type="PackedScene" uid="uid://dqs3vongqt72b" path="res://scenes/ice_rune.tscn" id="7_lui1t"]
 [ext_resource type="PackedScene" uid="uid://o0s40epnudpc" path="res://scenes/ice_block.tscn" id="8_nnjfw"]
 [ext_resource type="PackedScene" uid="uid://44idkop27w4d" path="res://scenes/single_use_puzzle_button.tscn" id="9_w3ser"]
 
@@ -811,7 +812,7 @@ tile_map_data = PackedByteArray("AAAFAAMAAAAJAAcAAAAFAAIAAAAJAAcAAAAFAAEAAAAJAAc
 tile_set = SubResource("TileSet_w0m8c")
 
 [node name="locked_door" parent="WallLayer" instance=ExtResource("3_1y8xl")]
-position = Vector2(-16, -62)
+position = Vector2(5, -62)
 buttonsToOpen = 2
 
 [node name="PuzzleButton" parent="." instance=ExtResource("6_4xk0p")]
@@ -828,6 +829,12 @@ position = Vector2(24, 40)
 
 [node name="Block2" parent="." instance=ExtResource("5_w0m8c")]
 position = Vector2(6, -8)
+
+[node name="Block3" parent="." instance=ExtResource("5_w0m8c")]
+position = Vector2(-37, -160)
+
+[node name="IceRune" parent="." instance=ExtResource("7_lui1t")]
+position = Vector2(-1, -160)
 
 [node name="IceBlock" parent="." instance=ExtResource("8_nnjfw")]
 position = Vector2(-49, 70)

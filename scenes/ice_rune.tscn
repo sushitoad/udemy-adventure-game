@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqs3vongqt72b"]
+
+[ext_resource type="Script" uid="uid://cf6xlcdanosao" path="res://scripts/ice_rune.gd" id="1_eyftn"]
+[ext_resource type="Texture2D" uid="uid://c5xcpc73qo46d" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetLogic.png" id="2_xl77c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obj1l"]
+atlas = ExtResource("2_xl77c")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv87d"]
+size = Vector2(6, 6)
+
+[node name="IceRune" type="Area2D"]
+script = ExtResource("1_eyftn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_obj1l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dv87d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
