@@ -815,6 +815,9 @@ tile_set = SubResource("TileSet_w0m8c")
 position = Vector2(5, -62)
 buttonsToOpen = 2
 
+[node name="IceRune" parent="." instance=ExtResource("7_lui1t")]
+position = Vector2(-1, -160)
+
 [node name="PuzzleButton" parent="." instance=ExtResource("6_4xk0p")]
 position = Vector2(68, 23)
 
@@ -833,11 +836,10 @@ position = Vector2(6, -8)
 [node name="Block3" parent="." instance=ExtResource("5_w0m8c")]
 position = Vector2(-37, -160)
 
-[node name="IceRune" parent="." instance=ExtResource("7_lui1t")]
-position = Vector2(-1, -160)
-
 [node name="IceBlock" parent="." instance=ExtResource("8_nnjfw")]
 position = Vector2(-49, 70)
+
+[node name="NewBlocks" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_5u6jg")]
 position = Vector2(-16, 70)

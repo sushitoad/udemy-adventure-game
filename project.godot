@@ -42,8 +42,10 @@ folder_colors={
 [global_group]
 
 wall="A Wall TilemapLayer"
-pushable="a Rigidbody2D that the player may push"
 player=""
+pushable="a Rigidbody2D that the player may push"
+block=""
+ice_block=""
 
 [input]
 
@@ -88,6 +90,7 @@ Interact={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Puzzle Elements"
 2d_physics/layer_4="Puzzle Walls"
+2d_physics/layer_5="Runes"
 
 [rendering]
 

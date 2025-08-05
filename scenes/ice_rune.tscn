@@ -11,6 +11,8 @@ region = Rect2(0, 80, 16, 16)
 size = Vector2(6, 6)
 
 [node name="IceRune" type="Area2D"]
+collision_layer = 16
+collision_mask = 4
 script = ExtResource("1_eyftn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
