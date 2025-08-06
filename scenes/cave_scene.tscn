@@ -817,6 +817,8 @@ buttonsToOpen = 2
 
 [node name="IceRune" parent="." instance=ExtResource("7_lui1t")]
 position = Vector2(-1, -160)
+collision_mask = 6
+singleUse = true
 
 [node name="PuzzleButton" parent="." instance=ExtResource("6_4xk0p")]
 position = Vector2(68, 23)

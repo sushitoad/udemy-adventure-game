@@ -1,8 +1,5 @@
 extends Area2D
 
-#detect when a block passes over this
-#replace that block with an ice block in the same location
-#gray itself out maybe?
 var iceBlock = preload("res://scenes/ice_block.tscn")
 var blockPosition
 
@@ -18,9 +15,12 @@ func _on_body_entered(body: Node2D) -> void:
 			blockPosition = body.global_position
 			body.queue_free()
 			var newIceBlock = iceBlock.instantiate()
-			$"../NewBlocks".add_child(newIceBlock)
+			$"../NewBlocks".add_child(newIceBlock) #this will break in different scenes I think?
 			newIceBlock.global_position = blockPosition
 			if singleUse:
 				hasBeenUsed = true
 				$Sprite2D.modulate = usedColor
-		
+	elif body.is_in_group("player"):
+		if singleUse and hasBeenUsed:
+			hasBeenUsed = false
+			$Sprite2D.modulate = Color(1, 1, 1, 1)
