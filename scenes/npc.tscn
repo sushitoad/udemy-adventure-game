@@ -13,9 +13,9 @@ font_size = 40
 font_color = Color(0, 0, 0, 1)
 outline_color = Color(0.439049, 0.439049, 0.439049, 1)
 
-[node name="NPC" type="StaticBody2D"]
+[node name="NPC" type="StaticBody2D" groups=["interactable"]]
 script = ExtResource("1_abqhh")
-talkDistance = 24.0
+sentences = "stinky little tooter"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nh2m4")
