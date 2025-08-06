@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dvpcuu1ggldet"]
+[gd_scene load_steps=23 format=4 uid="uid://dvpcuu1ggldet"]
 
 [ext_resource type="Texture2D" uid="uid://5ujkbfsovvqs" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_rurhu"]
 [ext_resource type="PackedScene" uid="uid://bsi5sx6qtshm1" path="res://scenes/player.tscn" id="1_w5aja"]
@@ -7,8 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://ein0iksjtdt7" path="res://scenes/puzzle_button.tscn" id="2_tcjrq"]
 [ext_resource type="PackedScene" uid="uid://1j1kcmnr735j" path="res://scenes/block.tscn" id="3_rvs2r"]
 [ext_resource type="PackedScene" uid="uid://b37q6nyscea4p" path="res://scenes/locked_door.tscn" id="7_rvs2r"]
+[ext_resource type="Texture2D" uid="uid://hphdh0bfq8o1" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/MaskRacoon/SpriteSheet.png" id="8_mw25s"]
 [ext_resource type="PackedScene" uid="uid://4pa4rlpnrynt" path="res://scenes/npc.tscn" id="9_rvs2r"]
+[ext_resource type="Texture2D" uid="uid://d0vkcb5utge0g" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/MaskRacoon/Faceset.png" id="9_tcjrq"]
 [ext_resource type="PackedScene" uid="uid://dekpgewfkrfg0" path="res://scenes/scene_entrance.tscn" id="9_utbpp"]
+[ext_resource type="Texture2D" uid="uid://c148dwik4jblq" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/OldMan3/SpriteSheet.png" id="10_tqxxy"]
+[ext_resource type="Texture2D" uid="uid://b3o0pym0g0c15" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/OldMan3/Faceset.png" id="11_5ay1a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk2rg"]
 texture = ExtResource("1_rurhu")
@@ -820,11 +824,35 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
 
+[node name="NPC" parent="ObstacleLayer" instance=ExtResource("9_rvs2r")]
+position = Vector2(-9, -58)
+characterName = "Ribbo the Gribbo"
+
+[node name="NPC2" parent="ObstacleLayer" instance=ExtResource("9_rvs2r")]
+position = Vector2(-120, -142)
+characterName = "Federation Enforcer"
+sentences = "behold deez nuts"
+
+[node name="Sprite2D" parent="ObstacleLayer/NPC2" index="0"]
+texture = ExtResource("8_mw25s")
+
+[node name="Portrait" parent="ObstacleLayer/NPC2/CanvasLayer/DialogueBox" index="0"]
+texture = ExtResource("9_tcjrq")
+
+[node name="NPC3" parent="ObstacleLayer" instance=ExtResource("9_rvs2r")]
+position = Vector2(352, -157)
+characterName = "Man in Disbelief"
+sentences = "You walked all the fuckin' way over here?"
+
+[node name="Sprite2D" parent="ObstacleLayer/NPC3" index="0"]
+texture = ExtResource("10_tqxxy")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Portrait" parent="ObstacleLayer/NPC3/CanvasLayer/DialogueBox" index="0"]
+texture = ExtResource("11_5ay1a")
+
 [node name="locked_door" parent="." instance=ExtResource("7_rvs2r")]
 position = Vector2(40, -187)
-
-[node name="NPC" parent="." instance=ExtResource("9_rvs2r")]
-position = Vector2(-9, -58)
 
 [node name="SceneEntrance" parent="." instance=ExtResource("9_utbpp")]
 position = Vector2(40, -192)
@@ -853,3 +881,6 @@ shape = SubResource("RectangleShape2D_ldkr4")
 
 [connection signal="pressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_unpressed"]
+
+[editable path="ObstacleLayer/NPC2"]
+[editable path="ObstacleLayer/NPC3"]

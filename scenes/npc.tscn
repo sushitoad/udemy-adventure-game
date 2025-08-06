@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4pa4rlpnrynt"]
+[gd_scene load_steps=8 format=3 uid="uid://4pa4rlpnrynt"]
 
 [ext_resource type="Script" uid="uid://b2ec56eyv0q3x" path="res://scripts/npc.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://m8leol6hxp4f" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/MaskFrog/SpriteSheet.png" id="1_nh2m4"]
@@ -12,6 +12,14 @@ size = Vector2(9, 9)
 font_size = 40
 font_color = Color(0, 0, 0, 1)
 outline_color = Color(0.439049, 0.439049, 0.439049, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7n8xq"]
+line_spacing = 0.0
+font_size = 24
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.717647)
 
 [node name="NPC" type="StaticBody2D" groups=["interactable"]]
 script = ExtResource("1_abqhh")
@@ -45,9 +53,20 @@ offset_bottom = 52.0
 texture = ExtResource("4_7n8xq")
 
 [node name="DialogueText" type="Label" parent="CanvasLayer"]
-offset_left = 358.0
-offset_top = 614.0
-offset_right = 1296.0
-offset_bottom = 727.0
+offset_left = 343.0
+offset_top = 598.0
+offset_right = 1311.0
+offset_bottom = 742.0
 text = "POOPY SMELLY BUTTHOLE"
 label_settings = SubResource("LabelSettings_4wlns")
+autowrap_mode = 3
+
+[node name="CharacterName" type="Label" parent="CanvasLayer"]
+offset_left = 159.0
+offset_top = 542.0
+offset_right = 415.0
+offset_bottom = 576.0
+text = "Glorbfart the Wise"
+label_settings = SubResource("LabelSettings_7n8xq")
+horizontal_alignment = 1
+vertical_alignment = 1
