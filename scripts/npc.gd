@@ -13,8 +13,12 @@ func _process(delta: float) -> void:
 			Talk(sentences)
 
 func Talk(words: String):
-	$CanvasLayer.visible = !$CanvasLayer.visible
-	$CanvasLayer/DialogueText.text = words
+	if $CanvasLayer.visible == true:
+		StopTalking()
+	else:
+		$CanvasLayer.visible = true
+		$CanvasLayer/DialogueText.text = words
 	
 func StopTalking():
 	$CanvasLayer.visible = false
+	#get_tree().paused = false
