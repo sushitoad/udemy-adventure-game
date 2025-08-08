@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dv0sgxv8mqdta"]
+[gd_scene load_steps=16 format=4 uid="uid://dv0sgxv8mqdta"]
 
 [ext_resource type="PackedScene" uid="uid://bsi5sx6qtshm1" path="res://scenes/player.tscn" id="1_5u6jg"]
 [ext_resource type="Texture2D" uid="uid://bprwsdcu1jdru" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/Interior/TilesetWallSimple.png" id="1_ucyxh"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dqs3vongqt72b" path="res://scenes/ice_rune.tscn" id="7_lui1t"]
 [ext_resource type="PackedScene" uid="uid://o0s40epnudpc" path="res://scenes/ice_block.tscn" id="8_nnjfw"]
 [ext_resource type="PackedScene" uid="uid://44idkop27w4d" path="res://scenes/single_use_puzzle_button.tscn" id="9_w3ser"]
+[ext_resource type="PackedScene" uid="uid://cfwqmgx6bi6os" path="res://scenes/pause_menu.tscn" id="11_6fm3r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w0m8c"]
 texture = ExtResource("1_wb8t5")
@@ -860,6 +861,8 @@ position = Vector2(-16, 104)
 sceneToLoad = "res://scenes/game_scene.tscn"
 spawnPoint = Vector2(39, -169)
 spawnIndex = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("11_6fm3r")]
 
 [connection signal="pressed" from="PuzzleButton" to="WallLayer/locked_door" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="WallLayer/locked_door" method="_on_puzzle_button_unpressed"]

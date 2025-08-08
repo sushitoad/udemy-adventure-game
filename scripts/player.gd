@@ -13,8 +13,8 @@ func _ready() -> void:
 	position = spawnPoints[SceneManager.spawnIndex]
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("Quit"):
-		get_tree().quit()
+	#if Input.is_action_just_pressed("Quit"):
+		#get_tree().quit()
 	movePlayer()
 	pushBlocks()
 	move_and_slide()

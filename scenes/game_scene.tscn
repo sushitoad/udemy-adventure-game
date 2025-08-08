@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dvpcuu1ggldet"]
+[gd_scene load_steps=24 format=4 uid="uid://dvpcuu1ggldet"]
 
 [ext_resource type="Texture2D" uid="uid://5ujkbfsovvqs" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_rurhu"]
 [ext_resource type="PackedScene" uid="uid://bsi5sx6qtshm1" path="res://scenes/player.tscn" id="1_w5aja"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dekpgewfkrfg0" path="res://scenes/scene_entrance.tscn" id="9_utbpp"]
 [ext_resource type="Texture2D" uid="uid://c148dwik4jblq" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/OldMan3/SpriteSheet.png" id="10_tqxxy"]
 [ext_resource type="Texture2D" uid="uid://b3o0pym0g0c15" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/OldMan3/Faceset.png" id="11_5ay1a"]
+[ext_resource type="PackedScene" uid="uid://cfwqmgx6bi6os" path="res://scenes/pause_menu.tscn" id="14_5ay1a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk2rg"]
 texture = ExtResource("1_rurhu")
@@ -878,6 +879,8 @@ shape = SubResource("RectangleShape2D_5ay1a")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="PuzzleWalls"]
 position = Vector2(44, 1)
 shape = SubResource("RectangleShape2D_ldkr4")
+
+[node name="PauseMenu" parent="." instance=ExtResource("14_5ay1a")]
 
 [connection signal="pressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_unpressed"]
