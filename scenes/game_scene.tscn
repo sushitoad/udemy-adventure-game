@@ -828,11 +828,12 @@ editor_draw_drag_margin = true
 [node name="NPC" parent="ObstacleLayer" instance=ExtResource("9_rvs2r")]
 position = Vector2(-9, -58)
 characterName = "Ribbo the Gribbo"
+sentences = Array[String]([])
 
 [node name="NPC2" parent="ObstacleLayer" instance=ExtResource("9_rvs2r")]
 position = Vector2(-120, -142)
 characterName = "Federation Enforcer"
-sentences = "behold deez nuts"
+sentences = Array[String]([])
 
 [node name="Sprite2D" parent="ObstacleLayer/NPC2" index="0"]
 texture = ExtResource("8_mw25s")
@@ -843,7 +844,7 @@ texture = ExtResource("9_tcjrq")
 [node name="NPC3" parent="ObstacleLayer" instance=ExtResource("9_rvs2r")]
 position = Vector2(352, -157)
 characterName = "Man in Disbelief"
-sentences = "You walked all the fuckin' way over here?"
+sentences = Array[String]([])
 
 [node name="Sprite2D" parent="ObstacleLayer/NPC3" index="0"]
 texture = ExtResource("10_tqxxy")

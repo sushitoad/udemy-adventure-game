@@ -2,15 +2,17 @@ extends StaticBody2D
 
 var playerInRange: bool = false
 @export var characterName: String
-@export var sentences: String
+@export var sentences: Array[String]
 
 func _ready() -> void:
 	StopTalking()
 	$CanvasLayer/CharacterName.text = characterName
+	for sentence in sentences:
+		print(sentence)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact") and playerInRange:
-			Talk(sentences)
+			Talk(sentences[0])
 
 func Talk(words: String):
 	if $CanvasLayer.visible == true:
@@ -21,4 +23,3 @@ func Talk(words: String):
 	
 func StopTalking():
 	$CanvasLayer.visible = false
-	#get_tree().paused = false

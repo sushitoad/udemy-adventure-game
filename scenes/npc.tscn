@@ -24,7 +24,8 @@ shadow_color = Color(0, 0, 0, 0.717647)
 [node name="NPC" type="StaticBody2D" groups=["interactable"]]
 process_mode = 3
 script = ExtResource("1_abqhh")
-sentences = "stinky little tooter"
+characterName = "buttzo"
+sentences = Array[String](["for", "each", "loop"])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nh2m4")
