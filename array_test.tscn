@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dumbenwf84ujm"]
-
-[ext_resource type="Script" uid="uid://e1ns66kxomdk" path="res://array_test.gd" id="1_4snv5"]
-
-[node name="ArrayTest" type="Node2D"]
-script = ExtResource("1_4snv5")
-arr1 = Array[int]([0, 10, 0, 20, 30, 40, 50])
