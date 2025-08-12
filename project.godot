@@ -48,6 +48,7 @@ pushable="a Rigidbody2D that the player may push"
 block=""
 ice_block=""
 interactable=""
+npc=""
 
 [input]
 

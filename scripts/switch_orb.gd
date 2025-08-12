@@ -9,10 +9,17 @@ signal off
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact") and playerInRange:
-		isOn = !isOn
 		if isOn:
-			sprite.play("on")
-			on.emit()
+			TurnOffSwitch()
 		else:
-			sprite.play("off")
-			off.emit()
+			TurnOnSwitch()
+
+func TurnOnSwitch():
+	isOn = true
+	sprite.play("on")
+	on.emit()
+	
+func TurnOffSwitch():
+	isOn = false
+	sprite.play("off")
+	off.emit()
