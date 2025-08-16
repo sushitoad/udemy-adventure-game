@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dv0sgxv8mqdta"]
+[gd_scene load_steps=17 format=4 uid="uid://dv0sgxv8mqdta"]
 
 [ext_resource type="PackedScene" uid="uid://bsi5sx6qtshm1" path="res://scenes/player.tscn" id="1_5u6jg"]
 [ext_resource type="Texture2D" uid="uid://bprwsdcu1jdru" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/Interior/TilesetWallSimple.png" id="1_ucyxh"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dqs3vongqt72b" path="res://scenes/ice_rune.tscn" id="7_lui1t"]
 [ext_resource type="PackedScene" uid="uid://cfwqmgx6bi6os" path="res://scenes/pause_menu.tscn" id="11_6fm3r"]
 [ext_resource type="PackedScene" uid="uid://tdxyxhroxcg3" path="res://scenes/switch_orb.tscn" id="11_jiuq5"]
+[ext_resource type="PackedScene" uid="uid://cq3q1gbj5mj8i" path="res://scenes/switch_puzzle_manager.tscn" id="11_u6cyb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w0m8c"]
 texture = ExtResource("1_wb8t5")
@@ -843,6 +844,22 @@ position = Vector2(-37, -160)
 
 [node name="NewBlocks" type="Node" parent="."]
 
+[node name="SwitchPuzzleManager" parent="." instance=ExtResource("11_u6cyb")]
+position = Vector2(-118, 47)
+scoreToSolve = 2
+
+[node name="SwitchOrb" parent="." instance=ExtResource("11_jiuq5")]
+position = Vector2(-96, 26)
+
+[node name="SwitchOrb2" parent="." instance=ExtResource("11_jiuq5")]
+position = Vector2(-48, 26)
+
+[node name="SwitchOrb3" parent="." instance=ExtResource("11_jiuq5")]
+position = Vector2(-96, 65)
+
+[node name="SwitchOrb4" parent="." instance=ExtResource("11_jiuq5")]
+position = Vector2(-48, 65)
+
 [node name="Player" parent="." instance=ExtResource("1_5u6jg")]
 position = Vector2(-16, 70)
 motion_mode = 1
@@ -863,12 +880,17 @@ spawnIndex = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("11_6fm3r")]
 
-[node name="SwitchOrb" parent="." instance=ExtResource("11_jiuq5")]
-position = Vector2(-88, 46)
-
 [connection signal="pressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_unpressed"]
 [connection signal="pressed" from="PuzzleButton2" to="locked_door" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton2" to="locked_door" method="_on_puzzle_button_unpressed"]
-[connection signal="off" from="SwitchOrb" to="SecretWallLayer" method="EnableSecretWall"]
-[connection signal="on" from="SwitchOrb" to="SecretWallLayer" method="DisableSecretWall"]
+[connection signal="puzzleFailed" from="SwitchPuzzleManager" to="SecretWallLayer" method="EnableSecretWall"]
+[connection signal="puzzleSolved" from="SwitchPuzzleManager" to="SecretWallLayer" method="DisableSecretWall"]
+[connection signal="off" from="SwitchOrb" to="SwitchPuzzleManager" method="DecreaseScore"]
+[connection signal="on" from="SwitchOrb" to="SwitchPuzzleManager" method="IncreaseScore"]
+[connection signal="off" from="SwitchOrb2" to="SwitchPuzzleManager" method="IncreaseScore"]
+[connection signal="on" from="SwitchOrb2" to="SwitchPuzzleManager" method="DecreaseScore"]
+[connection signal="off" from="SwitchOrb3" to="SwitchPuzzleManager" method="IncreaseScore"]
+[connection signal="on" from="SwitchOrb3" to="SwitchPuzzleManager" method="DecreaseScore"]
+[connection signal="off" from="SwitchOrb4" to="SwitchPuzzleManager" method="DecreaseScore"]
+[connection signal="on" from="SwitchOrb4" to="SwitchPuzzleManager" method="IncreaseScore"]
