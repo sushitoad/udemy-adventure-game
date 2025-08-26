@@ -3,6 +3,7 @@ extends Node2D
 var spawnPoint: Vector2
 var spawnIndex: int = 0
 
+var openedChests: Array[String] = []
 
 func _ready() -> void:
 	pass

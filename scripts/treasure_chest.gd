@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+@export var chestName: String
+
 var playerInRange: bool = false
 @onready var sprite = $AnimatedSprite2D
 @onready var scrollTimer = $Timer
@@ -8,6 +10,8 @@ var playerInRange: bool = false
 var opened: bool = false
 
 func _ready() -> void:
+	if SceneManager.openedChests.has(chestName):
+		opened= true
 	if !opened:
 		sprite.play("closed")
 	else:
@@ -23,3 +27,4 @@ func OpenChest():
 	opened = true
 	scrollTimer.start()
 	$AnimationPlayer.play("collectScroll")
+	SceneManager.openedChests.append(chestName)
