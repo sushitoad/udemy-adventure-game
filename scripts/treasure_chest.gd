@@ -6,8 +6,9 @@ var playerInRange: bool = false
 @onready var sprite = $AnimatedSprite2D
 @onready var scrollTimer = $Timer
 @onready var scrollSprite = $Sprite2D
-
 var opened: bool = false
+
+signal chestOpened
 
 func _ready() -> void:
 	if SceneManager.openedChests.has(chestName):
@@ -28,3 +29,4 @@ func OpenChest():
 	scrollTimer.start()
 	$AnimationPlayer.play("collectScroll")
 	SceneManager.openedChests.append(chestName)
+	chestOpened.emit()

@@ -11,12 +11,15 @@ class_name Player
 func _ready() -> void:
 	#position = SceneManager.spawnPoint
 	position = spawnPoints[SceneManager.spawnIndex]
+	UpdateTreasureLabel()
+	#connect UpdateTreasureLabel to all the chestOpened signals instead of using physics process
 
 func _physics_process(delta: float) -> void:
 	#if Input.is_action_just_pressed("Quit"):
 		#get_tree().quit()
 	movePlayer()
 	pushBlocks()
+	UpdateTreasureLabel()
 	move_and_slide()
 	
 func movePlayer():
@@ -49,6 +52,9 @@ func pushBlocks():
 			if colliderNode.is_in_group("pushable"):
 				var collisionNormal: Vector2 = collision.get_normal()
 				colliderNode.apply_central_force(-collisionNormal * pushStrength)
+
+func UpdateTreasureLabel():
+	%TreasureLabel.text = str(SceneManager.openedChests.size())
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
