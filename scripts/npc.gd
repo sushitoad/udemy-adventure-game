@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 			if sentenceIndex == sentences.size():
 				StopTalking()
 			else:
+				$AudioStreamPlayer2D.play()
 				Talk(sentences[sentenceIndex])
 				sentenceIndex += 1
 

@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 
 func TurnOnSwitch():
 	isOn = true
+	$TurnOnSound2D.play()
 	sprite.play("on")
 	on.emit()
 	

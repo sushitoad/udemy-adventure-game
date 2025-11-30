@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://4pa4rlpnrynt"]
+[gd_scene load_steps=9 format=3 uid="uid://4pa4rlpnrynt"]
 
 [ext_resource type="Script" uid="uid://b2ec56eyv0q3x" path="res://scripts/npc.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://m8leol6hxp4f" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/MaskFrog/SpriteSheet.png" id="1_nh2m4"]
+[ext_resource type="AudioStream" uid="uid://dc7bu1a6lodwo" path="res://art/Ninja Adventure - Asset Pack/Audio/Sounds/Menu/Accept6.wav" id="2_4wlns"]
 [ext_resource type="Texture2D" uid="uid://dtaspije2px5m" path="res://art/Ninja Adventure - Asset Pack/Ui/Dialog/DialogBoxFaceset.png" id="3_rv78h"]
 [ext_resource type="Texture2D" uid="uid://c1tggsathsiid" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/MaskFrog/Faceset.png" id="4_7n8xq"]
 
@@ -26,6 +27,10 @@ process_mode = 3
 script = ExtResource("1_abqhh")
 characterName = "buttzo"
 sentences = Array[String](["for", "each", "loop"])
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_4wlns")
+volume_db = -5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nh2m4")
