@@ -22,5 +22,6 @@ func TurnOnSwitch():
 	
 func TurnOffSwitch():
 	isOn = false
+	$TurnOffSound2D.play()
 	sprite.play("off")
 	off.emit()
