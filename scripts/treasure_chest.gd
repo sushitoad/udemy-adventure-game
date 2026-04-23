@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 func OpenChest():
 	sprite.play("open")
 	opened = true
+	$UnlockSound.play()
 	scrollTimer.start()
 	$AnimationPlayer.play("collectScroll")
 	SceneManager.openedChests.append(chestName)

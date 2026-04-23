@@ -789,7 +789,7 @@ sources/0 = SubResource("TileSetAtlasSource_tcjrq")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=587513043]
 process_mode = 3
 stream = ExtResource("1_liy57")
-volume_db = -14.0
+volume_db = -16.0
 autoplay = true
 parameters/looping = true
 
