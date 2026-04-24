@@ -53,6 +53,7 @@ block=""
 ice_block=""
 interactable=""
 npc=""
+enemy=""
 
 [input]
 
@@ -98,6 +99,7 @@ Interact={
 2d_physics/layer_3="Puzzle Elements"
 2d_physics/layer_4="Puzzle Walls"
 2d_physics/layer_5="Runes"
+2d_physics/layer_6="Enemies"
 
 [rendering]
 

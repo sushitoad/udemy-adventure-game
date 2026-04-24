@@ -7,12 +7,16 @@ class_name Player
 @export var HP: int = 10
 @export var spawnPoints: PackedVector2Array
 @export var pushStrength: float = 80
+@export var maxHP: int = 4
+
+signal player_died
 
 func _ready() -> void:
 	#position = SceneManager.spawnPoint
 	position = spawnPoints[SceneManager.spawnIndex]
 	UpdateTreasureLabel()
 	#connect UpdateTreasureLabel to all the chestOpened signals instead of using physics process
+	SceneManager.playerCurrentHP = maxHP
 
 func _physics_process(delta: float) -> void:
 	#if Input.is_action_just_pressed("Quit"):
@@ -65,3 +69,14 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		body.playerInRange = false
 		if body.is_in_group("npc"):
 			body.StopTalking()
+
+func TakeDamage(damage: int):
+	SceneManager.playerCurrentHP -= damage
+	print(SceneManager.playerCurrentHP)
+	if SceneManager.playerCurrentHP <= 0:
+		player_died.emit()
+		get_tree().call_deferred("reload_current_scene")
+
+func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		TakeDamage(1)

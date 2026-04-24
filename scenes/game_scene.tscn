@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c148dwik4jblq" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/OldMan3/SpriteSheet.png" id="10_tqxxy"]
 [ext_resource type="Texture2D" uid="uid://b3o0pym0g0c15" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/OldMan3/Faceset.png" id="11_5ay1a"]
 [ext_resource type="PackedScene" uid="uid://cfwqmgx6bi6os" path="res://scenes/pause_menu.tscn" id="14_5ay1a"]
+[ext_resource type="PackedScene" uid="uid://btm8nrhm5w7sg" path="res://scenes/slime_enemy.tscn" id="17_mwyo0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk2rg"]
 texture = ExtResource("1_rurhu")
@@ -867,6 +868,9 @@ position = Vector2(40, -181)
 sceneToLoad = "res://scenes/cave_scene.tscn"
 
 [node name="PauseMenu" parent="." unique_id=630273121 instance=ExtResource("14_5ay1a")]
+
+[node name="SlimeEnemy" parent="." unique_id=1475877766 instance=ExtResource("17_mwyo0")]
+position = Vector2(59, -25)
 
 [connection signal="pressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_unpressed"]
