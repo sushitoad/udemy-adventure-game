@@ -7,7 +7,8 @@ class_name Player
 @export var HP: int = 10
 @export var spawnPoints: PackedVector2Array
 @export var pushStrength: float = 80
-@export var maxHP: int = 4
+@export var heartUI: Array[AnimatedSprite2D]
+var maxHP: int
 
 signal player_died
 
@@ -16,11 +17,11 @@ func _ready() -> void:
 	position = spawnPoints[SceneManager.spawnIndex]
 	UpdateTreasureLabel()
 	#connect UpdateTreasureLabel to all the chestOpened signals instead of using physics process
+	maxHP = SceneManager.playerCollectedHearts * 2
 	SceneManager.playerCurrentHP = maxHP
+	updateHeartDisplay()
 
 func _physics_process(delta: float) -> void:
-	#if Input.is_action_just_pressed("Quit"):
-		#get_tree().quit()
 	movePlayer()
 	pushBlocks()
 	UpdateTreasureLabel()
@@ -70,6 +71,10 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		if body.is_in_group("npc"):
 			body.StopTalking()
 
+func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		TakeDamage(1)
+
 func TakeDamage(damage: int):
 	SceneManager.playerCurrentHP -= damage
 	print(SceneManager.playerCurrentHP)
@@ -77,6 +82,19 @@ func TakeDamage(damage: int):
 		player_died.emit()
 		get_tree().call_deferred("reload_current_scene")
 
-func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy"):
-		TakeDamage(1)
+func updatePlayerHP():
+	var hp: int = SceneManager.playerCurrentHP
+	#need some sort of math sorting to go through hearts and set the right animations
+	#switching to empty or half when hp is at the right place
+	#each ui element holds 2, so if > 2 set full move on
+	# if > 4 set full move on, if < 6 must be 5 so set half and set future to empty
+	#or if == 6 set full and future empty
+	#could use a counter that goes up by two and a "filled" bool?
+	pass
+
+#call after changing number of collected hearts
+func updateHeartDisplay():
+		for heart in heartUI:
+			if heartUI.find(heart) < SceneManager.playerCollectedHearts:
+				heart.visible = true
+			else: heart.visible = false

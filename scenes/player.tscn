@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cqalqv6ujwouk" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://c4r011vw7155o" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/NinjaGray/SeparateAnim/Walk.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://cvf38hv8i65fy" path="res://art/Ninja Adventure - Asset Pack/Items/Scroll/ScrollEmpty.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://bahxpjqlgkd7j" path="res://art/Ninja Adventure - Asset Pack/Ui/Receptacle/Heart.png" id="4_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -151,14 +152,78 @@ font_size = 48
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l71n6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r5pv")
+}],
+"loop": true,
+"name": &"1_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60mlk")
+}],
+"loop": true,
+"name": &"3_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ail")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a38lo")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ni07")
+}],
+"loop": true,
+"name": &"half",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 5.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1345242555 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1345242555 node_paths=PackedStringArray("heartUI") groups=["player"]]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_g2els")
 pushStrength = 150.0
+heartUI = [NodePath("CanvasLayer/HeartUI"), NodePath("CanvasLayer/HeartUI2"), NodePath("CanvasLayer/HeartUI3"), NodePath("CanvasLayer/HeartUI4"), NodePath("CanvasLayer/HeartUI5"), NodePath("CanvasLayer/HeartUI6")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2089485679]
 sprite_frames = SubResource("SpriteFrames_4r5pv")
@@ -178,28 +243,70 @@ debug_color = Color(0.528183, 0.565418, 0.245643, 0.42)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=907102234]
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=216827560]
-offset_left = 76.0
-offset_top = 44.0
-offset_right = 221.0
-offset_bottom = 109.0
+offset_left = 40.0
+offset_top = 141.0
+offset_right = 185.0
+offset_bottom = 206.0
 
 [node name="TreasureIcon" type="TextureRect" parent="CanvasLayer" unique_id=2114955261]
-offset_left = 86.0
-offset_top = 49.0
-offset_right = 142.0
-offset_bottom = 105.0
+offset_left = 50.0
+offset_top = 146.0
+offset_right = 106.0
+offset_bottom = 202.0
 texture = ExtResource("3_qhqgy")
 
 [node name="TreasureLabel" type="Label" parent="CanvasLayer" unique_id=1186448171]
 unique_name_in_owner = true
-offset_left = 153.0
-offset_top = 43.0
-offset_right = 213.0
-offset_bottom = 110.0
+offset_left = 117.0
+offset_top = 140.0
+offset_right = 177.0
+offset_bottom = 207.0
 text = "00"
 label_settings = SubResource("LabelSettings_dqkch")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HeartUI" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=869943978]
+position = Vector2(80, 74)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_l71n6")
+animation = &"full"
+autoplay = "full"
+
+[node name="HeartUI2" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1855229858]
+position = Vector2(160, 74)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_l71n6")
+animation = &"full"
+autoplay = "full"
+
+[node name="HeartUI3" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=561205371]
+position = Vector2(240, 74)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_l71n6")
+animation = &"full"
+autoplay = "full"
+
+[node name="HeartUI4" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=172180394]
+position = Vector2(320, 74)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_l71n6")
+animation = &"full"
+autoplay = "full"
+
+[node name="HeartUI5" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=888187962]
+position = Vector2(400, 74)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_l71n6")
+animation = &"full"
+autoplay = "full"
+
+[node name="HeartUI6" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=78205751]
+position = Vector2(480, 74)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_l71n6")
+animation = &"full"
+autoplay = "full"
 
 [node name="HitboxArea2D" type="Area2D" parent="." unique_id=860905504]
 collision_layer = 2
