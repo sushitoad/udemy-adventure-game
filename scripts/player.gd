@@ -18,8 +18,9 @@ func _ready() -> void:
 	UpdateTreasureLabel()
 	#connect UpdateTreasureLabel to all the chestOpened signals instead of using physics process
 	maxHP = SceneManager.playerCollectedHearts * 2
-	SceneManager.playerCurrentHP = maxHP
+	#SceneManager.playerCurrentHP = maxHP
 	updateHeartDisplay()
+	updatePlayerHP()
 
 func _physics_process(delta: float) -> void:
 	movePlayer()
@@ -77,20 +78,29 @@ func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
 
 func TakeDamage(damage: int):
 	SceneManager.playerCurrentHP -= damage
-	print(SceneManager.playerCurrentHP)
+	$HurtSound.play()
 	if SceneManager.playerCurrentHP <= 0:
 		player_died.emit()
+		SceneManager.playerCurrentHP = SceneManager.playerCollectedHearts * 2
 		get_tree().call_deferred("reload_current_scene")
+	updatePlayerHP()
 
 func updatePlayerHP():
 	var hp: int = SceneManager.playerCurrentHP
-	#need some sort of math sorting to go through hearts and set the right animations
-	#switching to empty or half when hp is at the right place
-	#each ui element holds 2, so if > 2 set full move on
-	# if > 4 set full move on, if < 6 must be 5 so set half and set future to empty
-	#or if == 6 set full and future empty
-	#could use a counter that goes up by two and a "filled" bool?
-	pass
+	var reachedHP: bool = false
+	var counter: int = 0
+	for heart in heartUI:
+		counter += 2
+		if !reachedHP:
+			if counter < hp:
+				heart.play("full")
+			elif counter == hp:
+				heart.play("full")
+				reachedHP = true
+			elif counter > hp:
+				heart.play("half")
+				reachedHP = true
+		else: heart.play("empty")
 
 #call after changing number of collected hearts
 func updateHeartDisplay():

@@ -10,5 +10,5 @@ var playerCurrentHP: int = 4
 var openedChests: Array[String] = []
 
 func _ready() -> void:
-	pass
+	playerCurrentHP = playerCollectedHearts * 2
 	#spawnPoint = find_node_in_scene("Player").position
