@@ -26,6 +26,8 @@ func _physics_process(delta: float) -> void:
 	movePlayer()
 	pushBlocks()
 	UpdateTreasureLabel()
+	if Input.is_action_just_pressed("Interact"):
+		Attack()
 	move_and_slide()
 	
 func movePlayer():
@@ -108,3 +110,16 @@ func updateHeartDisplay():
 			if heartUI.find(heart) < SceneManager.playerCollectedHearts:
 				heart.visible = true
 			else: heart.visible = false
+
+func Attack():
+	$Sword.visible = true
+	$Sword/SwordArea2D.monitoring = true
+	$Sword/AttackTimer.start()
+
+func _on_attack_timer_timeout() -> void:
+	$Sword.visible = false
+	$Sword/SwordArea2D.monitoring = false
+
+func _on_sword_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		body.queue_free()

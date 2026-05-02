@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cvf38hv8i65fy" path="res://art/Ninja Adventure - Asset Pack/Items/Scroll/ScrollEmpty.png" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bahxpjqlgkd7j" path="res://art/Ninja Adventure - Asset Pack/Ui/Receptacle/Heart.png" id="4_dqkch"]
 [ext_resource type="AudioStream" uid="uid://bldlm1go10hkc" path="res://art/Ninja Adventure - Asset Pack/Audio/Sounds/Creature/Wings.wav" id="5_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://8lyb0bcw3sml" path="res://art/Ninja Adventure - Asset Pack/Items/Weapons/Sword2/Sprite.png" id="6_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -219,6 +220,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 5.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
+size = Vector2(6, 16)
+
 [node name="Player" type="CharacterBody2D" unique_id=1345242555 node_paths=PackedStringArray("heartUI") groups=["player"]]
 collision_layer = 2
 collision_mask = 7
@@ -322,6 +326,25 @@ debug_color = Color(0.9959373, 0, 0.20456725, 0.41960785)
 stream = ExtResource("5_qlg0r")
 volume_db = -9.0
 
+[node name="Sword" type="Sprite2D" parent="." unique_id=341432360]
+visible = false
+position = Vector2(0, -15)
+texture = ExtResource("6_tuyoq")
+
+[node name="SwordArea2D" type="Area2D" parent="Sword" unique_id=1029165433]
+collision_layer = 2
+collision_mask = 32
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/SwordArea2D" unique_id=106014478]
+shape = SubResource("RectangleShape2D_fjrip")
+
+[node name="AttackTimer" type="Timer" parent="Sword" unique_id=1991406317]
+wait_time = 0.4
+one_shot = true
+
 [connection signal="body_entered" from="InteractArea2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractArea2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="HitboxArea2D" to="." method="_on_hitbox_area_2d_body_entered"]
+[connection signal="body_entered" from="Sword/SwordArea2D" to="." method="_on_sword_area_2d_body_entered"]
+[connection signal="timeout" from="Sword/AttackTimer" to="." method="_on_attack_timer_timeout"]
