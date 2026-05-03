@@ -9,6 +9,7 @@ class_name Player
 @export var pushStrength: float = 80
 @export var heartUI: Array[AnimatedSprite2D]
 var maxHP: int
+var attacking: bool = false
 
 signal player_died
 
@@ -33,6 +34,8 @@ func _physics_process(delta: float) -> void:
 func movePlayer():
 	var moveVector: Vector2 = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 	velocity = moveVector * moveSpeed
+	if attacking:
+		velocity = Vector2.ZERO
 	if velocity.x > 0:
 		animSprite.play("moveRight")
 		$InteractArea2D.position = Vector2(10, 0)
@@ -51,6 +54,9 @@ func movePlayer():
 		$InteractArea2D.rotation = 0
 	else:
 		animSprite.stop()
+#okay so we need something that handles this a bit better
+#im imagining a facing value that's decided by velocity but also keeps the oldest facing if there's a tie
+#so I think I'd want to test to see if there are ever consistent fractional values like 0.4 or if its always pretty much 0 or 1
 
 func pushBlocks():
 	var collision: KinematicCollision2D = get_last_slide_collision()
@@ -112,13 +118,25 @@ func updateHeartDisplay():
 			else: heart.visible = false
 
 func Attack():
+	attacking = true
 	$Sword.visible = true
 	$Sword/SwordArea2D.monitoring = true
 	$Sword/AttackTimer.start()
+	var playerAnim: String = $AnimatedSprite2D.animation
+	if playerAnim == "moveRight":
+		$AnimatedSprite2D.play("attackRight")
+	elif playerAnim == "moveLeft":
+		$AnimatedSprite2D.play("attackLeft")
+	elif playerAnim == "moveUp":
+		$AnimatedSprite2D.play("attackUp")
+	elif playerAnim == "moveDown":
+		$AnimatedSprite2D.play("attackDown")
+	
 
 func _on_attack_timer_timeout() -> void:
 	$Sword.visible = false
 	$Sword/SwordArea2D.monitoring = false
+	attacking = false
 
 func _on_sword_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):

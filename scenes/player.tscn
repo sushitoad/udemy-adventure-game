@@ -1,11 +1,28 @@
 [gd_scene format=3 uid="uid://bsi5sx6qtshm1"]
 
 [ext_resource type="Script" uid="uid://cqalqv6ujwouk" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://c5vd7a4ft4ds2" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/NinjaGray/SeparateAnim/Attack.png" id="2_fjrip"]
 [ext_resource type="Texture2D" uid="uid://c4r011vw7155o" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/NinjaGray/SeparateAnim/Walk.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://cvf38hv8i65fy" path="res://art/Ninja Adventure - Asset Pack/Items/Scroll/ScrollEmpty.png" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bahxpjqlgkd7j" path="res://art/Ninja Adventure - Asset Pack/Ui/Receptacle/Heart.png" id="4_dqkch"]
 [ext_resource type="AudioStream" uid="uid://bldlm1go10hkc" path="res://art/Ninja Adventure - Asset Pack/Audio/Sounds/Creature/Wings.wav" id="5_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://8lyb0bcw3sml" path="res://art/Ninja Adventure - Asset Pack/Items/Weapons/Sword2/Sprite.png" id="6_tuyoq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
+atlas = ExtResource("2_fjrip")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
+atlas = ExtResource("2_fjrip")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
+atlas = ExtResource("2_fjrip")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31cv2"]
+atlas = ExtResource("2_fjrip")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -73,6 +90,38 @@ region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4r5pv"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l71n6")
+}],
+"loop": true,
+"name": &"attackDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke2ow")
+}],
+"loop": true,
+"name": &"attackLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujl30")
+}],
+"loop": true,
+"name": &"attackRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31cv2")
+}],
+"loop": true,
+"name": &"attackUp",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qhqgy")
@@ -232,7 +281,8 @@ heartUI = [NodePath("CanvasLayer/HeartUI"), NodePath("CanvasLayer/HeartUI2"), No
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2089485679]
 sprite_frames = SubResource("SpriteFrames_4r5pv")
-animation = &"moveDown"
+animation = &"moveUp"
+autoplay = "moveDown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066992840]
 position = Vector2(0, 2)
