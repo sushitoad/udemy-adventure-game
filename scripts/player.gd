@@ -137,7 +137,16 @@ func _on_attack_timer_timeout() -> void:
 	$Sword.visible = false
 	$Sword/SwordArea2D.monitoring = false
 	attacking = false
+	var playerAnim: String = $AnimatedSprite2D.animation
+	if playerAnim == "attackRight":
+		$AnimatedSprite2D.play("moveRight")
+	elif playerAnim == "attackLeft":
+		$AnimatedSprite2D.play("moveLeft")
+	elif playerAnim == "attackUp":
+		$AnimatedSprite2D.play("moveUp")
+	elif playerAnim == "attackDown":
+		$AnimatedSprite2D.play("moveDown")
 
 func _on_sword_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.queue_free()
+		body.TakeDamage(1)

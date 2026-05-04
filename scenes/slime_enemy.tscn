@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1744mo5mmvlw" path="res://scripts/slime_enemy.gd" id="1_30a25"]
 [ext_resource type="Texture2D" uid="uid://cyh0yn85okgq0" path="res://art/Ninja Adventure - Asset Pack/Actor/Monsters/Slime4/Slime4.png" id="1_057e2"]
+[ext_resource type="AudioStream" uid="uid://dw4rao7twiqjc" path="res://audio/Audio/Sounds/Elemental/Water5.wav" id="3_fq0mw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_30a25"]
 atlas = ExtResource("1_057e2")
@@ -54,3 +55,9 @@ autoplay = "down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1623004280]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_asgod")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=2044220881]
+stream = ExtResource("3_fq0mw")
+volume_db = -6.0
+
+[connection signal="finished" from="DeathSound" to="." method="_on_death_sound_finished"]

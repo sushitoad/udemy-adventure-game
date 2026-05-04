@@ -272,6 +272,91 @@ radius = 5.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
 size = Vector2(6, 16)
 
+[sub_resource type="Animation" id="Animation_fjrip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -11)]
+}
+
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "attackUp"
+length = 0.23333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5707963267948966, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2, -9), Vector2(-3, -11)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ur7pv"]
+_data = {
+&"RESET": SubResource("Animation_fjrip"),
+&"attackUp": SubResource("Animation_smehm")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=1345242555 node_paths=PackedStringArray("heartUI") groups=["player"]]
 collision_layer = 2
 collision_mask = 7
@@ -281,7 +366,7 @@ heartUI = [NodePath("CanvasLayer/HeartUI"), NodePath("CanvasLayer/HeartUI2"), No
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2089485679]
 sprite_frames = SubResource("SpriteFrames_4r5pv")
-animation = &"moveUp"
+animation = &"attackUp"
 autoplay = "moveDown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066992840]
@@ -377,11 +462,13 @@ stream = ExtResource("5_qlg0r")
 volume_db = -9.0
 
 [node name="Sword" type="Sprite2D" parent="." unique_id=341432360]
-visible = false
-position = Vector2(0, -15)
+position = Vector2(-3, -11)
 texture = ExtResource("6_tuyoq")
+offset = Vector2(0, -5)
+flip_h = true
 
 [node name="SwordArea2D" type="Area2D" parent="Sword" unique_id=1029165433]
+position = Vector2(0, -5)
 collision_layer = 2
 collision_mask = 32
 monitoring = false
@@ -392,6 +479,9 @@ shape = SubResource("RectangleShape2D_fjrip")
 [node name="AttackTimer" type="Timer" parent="Sword" unique_id=1991406317]
 wait_time = 0.4
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=694642022]
+libraries/ = SubResource("AnimationLibrary_ur7pv")
 
 [connection signal="body_entered" from="InteractArea2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractArea2D" to="." method="_on_area_2d_body_exited"]

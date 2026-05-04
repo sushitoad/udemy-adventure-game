@@ -9,4 +9,7 @@ func _ready() -> void:
 func TakeDamage(damage: int):
 	currentHP -= damage
 	if currentHP <= 0:
-		call_deferred("queue_free")
+		$DeathSound.play()
+
+func _on_death_sound_finished() -> void:
+	call_deferred("queue_free")
