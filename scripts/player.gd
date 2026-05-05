@@ -125,12 +125,16 @@ func Attack():
 	var playerAnim: String = $AnimatedSprite2D.animation
 	if playerAnim == "moveRight":
 		$AnimatedSprite2D.play("attackRight")
+		$AnimationPlayer.play("attackRight")
 	elif playerAnim == "moveLeft":
 		$AnimatedSprite2D.play("attackLeft")
+		$AnimationPlayer.play("attackLeft")
 	elif playerAnim == "moveUp":
 		$AnimatedSprite2D.play("attackUp")
+		$AnimationPlayer.play("attackUp")
 	elif playerAnim == "moveDown":
 		$AnimatedSprite2D.play("attackDown")
+		$AnimationPlayer.play("attackDown")
 	
 
 func _on_attack_timer_timeout() -> void:
