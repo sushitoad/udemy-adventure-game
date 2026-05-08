@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cyh0yn85okgq0" path="res://art/Ninja Adventure - Asset Pack/Actor/Monsters/Slime4/Slime4.png" id="1_057e2"]
 [ext_resource type="AudioStream" uid="uid://dw4rao7twiqjc" path="res://audio/Audio/Sounds/Elemental/Water5.wav" id="3_fq0mw"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fq0mw"]
+radius = 59.008472
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_30a25"]
 atlas = ExtResource("1_057e2")
 region = Rect2(0, 0, 16, 16)
@@ -45,7 +48,17 @@ radius = 7.071068
 
 [node name="SlimeEnemy" type="CharacterBody2D" unique_id=1475877766 groups=["enemy"]]
 collision_layer = 32
+motion_mode = 1
 script = ExtResource("1_30a25")
+moveSpeed = 45.0
+
+[node name="LOSArea2D" type="Area2D" parent="." unique_id=1270425707]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LOSArea2D" unique_id=1265795945]
+shape = SubResource("CircleShape2D_fq0mw")
+debug_color = Color(0.270542, 0.61765295, 0.40245596, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=11426793]
 sprite_frames = SubResource("SpriteFrames_c78co")
@@ -60,4 +73,5 @@ shape = SubResource("CircleShape2D_asgod")
 stream = ExtResource("3_fq0mw")
 volume_db = -6.0
 
+[connection signal="body_entered" from="LOSArea2D" to="." method="_on_los_area_2d_body_entered"]
 [connection signal="finished" from="DeathSound" to="." method="_on_death_sound_finished"]
