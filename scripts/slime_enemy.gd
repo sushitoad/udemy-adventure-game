@@ -5,15 +5,35 @@ extends CharacterBody2D
 var currentHP: int
 var target: Node2D
 
+@onready var animSprite: AnimatedSprite2D = $AnimatedSprite2D
+
 func _ready() -> void:
 	currentHP = maxHP
 
 func _physics_process(delta: float) -> void:
 	if target:
-		var distance: Vector2 = (target.global_position - global_position).normalized()
-		velocity = distance * moveSpeed
+		chaseTarget()
+	animateEnemy()
 	
 	move_and_slide()
+
+func chaseTarget():
+	var distance: Vector2 = (target.global_position - global_position).normalized()
+	velocity = distance * moveSpeed
+
+func animateEnemy():
+	#this actually has a bug that doesn't handle when they move the exact same amount in each direction
+	if abs(velocity.x) > abs(velocity.y):
+		if velocity.x > 0:
+			animSprite.play("right")
+		elif velocity.x < 0:
+			animSprite.play("left")
+	elif abs(velocity.x) < abs(velocity.y):
+		if velocity.y > 0:
+			animSprite.play("down")
+		elif velocity.y < 0:
+			animSprite.play("up")
+	else: animSprite.play("idle")
 
 func TakeDamage(damage: int):
 	currentHP -= damage
