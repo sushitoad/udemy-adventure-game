@@ -168,8 +168,9 @@ animations = [{
 collision_layer = 32
 motion_mode = 1
 script = ExtResource("1_30a25")
-maxHP = 4
+maxHP = 3
 moveSpeed = 45.0
+attackKnockback = 240.0
 
 [node name="LOSArea2D" type="Area2D" parent="." unique_id=1270425707]
 collision_layer = 32

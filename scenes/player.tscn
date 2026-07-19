@@ -94,7 +94,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l71n6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"attackDown",
 "speed": 5.0
 }, {
@@ -102,7 +102,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ke2ow")
 }],
-"loop": true,
+"loop": 1,
 "name": &"attackLeft",
 "speed": 5.0
 }, {
@@ -110,7 +110,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ujl30")
 }],
-"loop": true,
+"loop": 1,
 "name": &"attackRight",
 "speed": 5.0
 }, {
@@ -118,7 +118,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_31cv2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"attackUp",
 "speed": 5.0
 }, {
@@ -135,7 +135,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tuyoq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"moveDown",
 "speed": 6.0
 }, {
@@ -152,7 +152,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y4r1p")
 }],
-"loop": true,
+"loop": 1,
 "name": &"moveLeft",
 "speed": 6.0
 }, {
@@ -169,7 +169,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f1ej7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"moveRight",
 "speed": 6.0
 }, {
@@ -186,7 +186,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fulsm")
 }],
-"loop": true,
+"loop": 1,
 "name": &"moveUp",
 "speed": 6.0
 }]
@@ -497,7 +497,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4r5pv")
 }],
-"loop": true,
+"loop": 1,
 "name": &"1_4",
 "speed": 5.0
 }, {
@@ -505,7 +505,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_60mlk")
 }],
-"loop": true,
+"loop": 1,
 "name": &"3_4",
 "speed": 5.0
 }, {
@@ -513,7 +513,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i4ail")
 }],
-"loop": true,
+"loop": 1,
 "name": &"empty",
 "speed": 5.0
 }, {
@@ -521,7 +521,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a38lo")
 }],
-"loop": true,
+"loop": 1,
 "name": &"full",
 "speed": 5.0
 }, {
@@ -529,7 +529,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4ni07")
 }],
-"loop": true,
+"loop": 1,
 "name": &"half",
 "speed": 5.0
 }]
@@ -546,6 +546,7 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_g2els")
 pushStrength = 150.0
+attackKnockback = 200.0
 heartUI = [NodePath("CanvasLayer/HeartUI"), NodePath("CanvasLayer/HeartUI2"), NodePath("CanvasLayer/HeartUI3"), NodePath("CanvasLayer/HeartUI4"), NodePath("CanvasLayer/HeartUI5"), NodePath("CanvasLayer/HeartUI6")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2089485679]

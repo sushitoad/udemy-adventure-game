@@ -7,7 +7,8 @@ class_name Player
 @export var HP: int = 10
 @export var spawnPoints: PackedVector2Array
 @export var pushStrength: float = 80
-@export var knockbackStrength: float = 150
+@export var attackKnockback: float = 150
+@export var acceleration: float = 10
 @export var heartUI: Array[AnimatedSprite2D]
 var maxHP: int
 var attacking: bool = false
@@ -34,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	
 func movePlayer():
 	var moveVector: Vector2 = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
-	velocity = moveVector * moveSpeed
+	velocity = velocity.move_toward(moveVector * moveSpeed, acceleration)
 	if attacking:
 		velocity = Vector2.ZERO
 	if velocity.x > 0:
@@ -84,10 +85,9 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		TakeDamage(1)
-		var distanceToEnemy: Vector2 = body.global_position - global_position
-		var knockbackDirection: Vector2 = distanceToEnemy.normalized()
-		
-		body.velocity += knockbackDirection * knockbackStrength
+		var distanceToPlayer: Vector2 = global_position - body.global_position
+		var knockbackDirection: Vector2 = distanceToPlayer.normalized()
+		velocity += knockbackDirection * body.attackKnockback
 
 func TakeDamage(damage: int):
 	SceneManager.playerCurrentHP -= damage
@@ -158,4 +158,4 @@ func _on_attack_timer_timeout() -> void:
 
 func _on_sword_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.TakeDamage(1)
+		body.TakeDamage(1, self)

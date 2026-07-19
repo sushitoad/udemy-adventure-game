@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var maxHP: int = 1
 @export var moveSpeed: float = 30
+@export var attackKnockback: float = 100
 var currentHP: int
 var target: Node2D
 
@@ -21,7 +22,6 @@ func _physics_process(delta: float) -> void:
 func chaseTarget():
 	var distance: Vector2 = (target.global_position - global_position).normalized()
 	velocity = velocity.move_toward(distance * moveSpeed, acceleration)
-	
 
 func animateEnemy():
 	#this actually has a bug that doesn't handle when they move the exact same amount in each direction
@@ -37,8 +37,11 @@ func animateEnemy():
 			animSprite.play("up")
 	else: animSprite.play("idle")
 
-func TakeDamage(damage: int):
+func TakeDamage(damage: int, body: Node2D):
 	currentHP -= damage
+	var distanceToEnemy: Vector2 = global_position - body.global_position
+	var knockbackDirection: Vector2 = distanceToEnemy.normalized()
+	velocity += knockbackDirection * body.attackKnockback
 	if currentHP <= 0:
 		$DeathSound.play()
 
