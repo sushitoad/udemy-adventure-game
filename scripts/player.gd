@@ -7,6 +7,7 @@ class_name Player
 @export var HP: int = 10
 @export var spawnPoints: PackedVector2Array
 @export var pushStrength: float = 80
+@export var knockbackStrength: float = 150
 @export var heartUI: Array[AnimatedSprite2D]
 var maxHP: int
 var attacking: bool = false
@@ -83,6 +84,10 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		TakeDamage(1)
+		var distanceToEnemy: Vector2 = body.global_position - global_position
+		var knockbackDirection: Vector2 = distanceToEnemy.normalized()
+		
+		body.velocity += knockbackDirection * knockbackStrength
 
 func TakeDamage(damage: int):
 	SceneManager.playerCurrentHP -= damage

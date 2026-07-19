@@ -6,6 +6,7 @@ var currentHP: int
 var target: Node2D
 
 @onready var animSprite: AnimatedSprite2D = $AnimatedSprite2D
+@export var acceleration: float = 5
 
 func _ready() -> void:
 	currentHP = maxHP
@@ -19,7 +20,8 @@ func _physics_process(delta: float) -> void:
 
 func chaseTarget():
 	var distance: Vector2 = (target.global_position - global_position).normalized()
-	velocity = distance * moveSpeed
+	velocity = velocity.move_toward(distance * moveSpeed, acceleration)
+	
 
 func animateEnemy():
 	#this actually has a bug that doesn't handle when they move the exact same amount in each direction
