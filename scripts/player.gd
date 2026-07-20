@@ -26,6 +26,8 @@ func _ready() -> void:
 	updatePlayerHP()
 
 func _physics_process(delta: float) -> void:
+	if SceneManager.playerCurrentHP <= 0:
+		return
 	movePlayer()
 	pushBlocks()
 	UpdateTreasureLabel()
@@ -85,6 +87,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		TakeDamage(1)
+		if SceneManager.playerCurrentHP <= 0:
+			body.ResetTarget()
 		var distanceToPlayer: Vector2 = global_position - body.global_position
 		var knockbackDirection: Vector2 = distanceToPlayer.normalized()
 		velocity += knockbackDirection * body.attackKnockback
@@ -93,13 +97,19 @@ func TakeDamage(damage: int):
 	SceneManager.playerCurrentHP -= damage
 	$HurtSound.play()
 	if SceneManager.playerCurrentHP <= 0:
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("death")
+		$AnimatedSprite2D.animation_finished.connect(Respawn)
 		player_died.emit()
+	updatePlayerHP()
+
+func Respawn():
 		SceneManager.playerCurrentHP = SceneManager.playerCollectedHearts * 2
 		get_tree().call_deferred("reload_current_scene")
-	updatePlayerHP()
 
 func updatePlayerHP():
 	var hp: int = SceneManager.playerCurrentHP
+	if hp < 0: hp = 0
 	var reachedHP: bool = false
 	var counter: int = 0
 	for heart in heartUI:
@@ -123,6 +133,8 @@ func updateHeartDisplay():
 			else: heart.visible = false
 
 func Attack():
+	if not $Sword/AttackTimer.is_stopped():
+		return
 	attacking = true
 	$Sword.visible = true
 	$Sword/SwordArea2D.monitoring = true
@@ -140,7 +152,6 @@ func Attack():
 	elif playerAnim == "moveDown":
 		$AnimatedSprite2D.play("attackDown")
 		$AnimationPlayer.play("attackDown")
-	
 
 func _on_attack_timer_timeout() -> void:
 	$Sword.visible = false

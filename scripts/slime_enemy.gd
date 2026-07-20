@@ -37,6 +37,10 @@ func animateEnemy():
 			animSprite.play("up")
 	else: animSprite.play("idle")
 
+func ResetTarget():
+	target = null
+	velocity = Vector2.ZERO
+
 func TakeDamage(damage: int, body: Node2D):
 	currentHP -= damage
 	var distanceToEnemy: Vector2 = global_position - body.global_position
