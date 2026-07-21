@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bahxpjqlgkd7j" path="res://art/Ninja Adventure - Asset Pack/Ui/Receptacle/Heart.png" id="4_dqkch"]
 [ext_resource type="AudioStream" uid="uid://bldlm1go10hkc" path="res://art/Ninja Adventure - Asset Pack/Audio/Sounds/Creature/Wings.wav" id="5_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://8lyb0bcw3sml" path="res://art/Ninja Adventure - Asset Pack/Items/Weapons/Sword2/Sprite.png" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://b64xxyfuojq7t" path="res://audio/Audio/Jingles/GameOver3.wav" id="8_ur7pv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
 atlas = ExtResource("2_fjrip")
@@ -685,6 +686,10 @@ debug_color = Color(0.9959373, 0, 0.20456725, 0.41960785)
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=1870782174]
 stream = ExtResource("5_qlg0r")
 volume_db = -9.0
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1278953434]
+stream = ExtResource("8_ur7pv")
+volume_db = -5.0
 
 [node name="Sword" type="Sprite2D" parent="." unique_id=341432360]
 visible = false

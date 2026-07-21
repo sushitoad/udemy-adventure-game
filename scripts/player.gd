@@ -12,6 +12,8 @@ class_name Player
 @export var heartUI: Array[AnimatedSprite2D]
 var maxHP: int
 var attacking: bool = false
+var inRangeToInteract: bool = false
+var currentInteraction: Node2D
 
 signal player_died
 
@@ -24,6 +26,7 @@ func _ready() -> void:
 	#SceneManager.playerCurrentHP = maxHP
 	updateHeartDisplay()
 	updatePlayerHP()
+	player_died.connect(%LevelMusic.stop)
 
 func _physics_process(delta: float) -> void:
 	if SceneManager.playerCurrentHP <= 0:
@@ -32,7 +35,10 @@ func _physics_process(delta: float) -> void:
 	pushBlocks()
 	UpdateTreasureLabel()
 	if Input.is_action_just_pressed("Interact"):
-		Attack()
+		if currentInteraction != null:
+			currentInteraction.Interact()
+		else:
+			Attack()
 	move_and_slide()
 	
 func movePlayer():
@@ -76,13 +82,15 @@ func UpdateTreasureLabel():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
-		body.playerInRange = true
+		currentInteraction = body
+		print(currentInteraction)
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
-		body.playerInRange = false
-		if body.is_in_group("npc"):
-			body.StopTalking()
+		if currentInteraction == body:
+			if currentInteraction.is_in_group("npc"):
+				currentInteraction.StopTalking()
+			currentInteraction = null
 
 func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
@@ -101,6 +109,7 @@ func TakeDamage(damage: int):
 		$AnimatedSprite2D.play("death")
 		$AnimatedSprite2D.animation_finished.connect(Respawn)
 		player_died.emit()
+		$DeathSound.play()
 	updatePlayerHP()
 
 func Respawn():

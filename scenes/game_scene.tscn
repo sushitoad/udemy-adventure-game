@@ -787,10 +787,11 @@ sources/0 = SubResource("TileSetAtlasSource_tcjrq")
 
 [node name="GameScene" type="Node2D" unique_id=1633665734]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=587513043]
+[node name="LevelMusic" type="AudioStreamPlayer" parent="." unique_id=587513043]
+unique_name_in_owner = true
 process_mode = 3
 stream = ExtResource("1_liy57")
-volume_db = -16.0
+volume_db = -18.0
 autoplay = true
 parameters/looping = true
 
@@ -819,7 +820,6 @@ tile_map_data = PackedByteArray("AAD1////AQACAAAAAAD5//v/AQAAAAIAAAAGAPz/AQAAAAI
 tile_set = SubResource("TileSet_utbpp")
 
 [node name="Player" parent="ObstacleLayer" unique_id=1895512488 instance=ExtResource("1_w5aja")]
-y_sort_enabled = true
 position = Vector2(-41, -85)
 motion_mode = 1
 spawnPoints = PackedVector2Array(-42, -84, 41, -166)
@@ -845,10 +845,10 @@ position = Vector2(-120, -142)
 characterName = "Federation Enforcer"
 sentences = Array[String](["Larry!", "Hey Larry!", "Behold...", "DEEZ NUTz!!!"])
 
-[node name="Sprite2D" parent="ObstacleLayer/NPC2" index="1"]
+[node name="Sprite2D" parent="ObstacleLayer/NPC2" index="1" unique_id=668871905]
 texture = ExtResource("8_mw25s")
 
-[node name="Portrait" parent="ObstacleLayer/NPC2/CanvasLayer/DialogueBox" index="0"]
+[node name="Portrait" parent="ObstacleLayer/NPC2/CanvasLayer/DialogueBox" parent_id_path=PackedInt32Array(899720065, 1514285111) index="0" unique_id=88936962]
 texture = ExtResource("9_tcjrq")
 
 [node name="NPC3" parent="ObstacleLayer" unique_id=1508697438 instance=ExtResource("9_rvs2r")]
@@ -856,11 +856,11 @@ position = Vector2(352, -157)
 characterName = "Man in Disbelief"
 sentences = Array[String](["You walked all the fuckin' way over here?"])
 
-[node name="Sprite2D" parent="ObstacleLayer/NPC3" index="1"]
+[node name="Sprite2D" parent="ObstacleLayer/NPC3" index="1" unique_id=668871905]
 texture = ExtResource("10_tqxxy")
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="Portrait" parent="ObstacleLayer/NPC3/CanvasLayer/DialogueBox" index="0"]
+[node name="Portrait" parent="ObstacleLayer/NPC3/CanvasLayer/DialogueBox" parent_id_path=PackedInt32Array(1508697438, 1514285111) index="0" unique_id=88936962]
 texture = ExtResource("11_5ay1a")
 
 [node name="locked_door" parent="." unique_id=672888288 instance=ExtResource("7_rvs2r")]

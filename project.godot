@@ -55,6 +55,10 @@ interactable=""
 npc=""
 enemy=""
 
+[gui]
+
+theme/custom_font="uid://c7qdpdjsm4jca"
+
 [input]
 
 Quit={

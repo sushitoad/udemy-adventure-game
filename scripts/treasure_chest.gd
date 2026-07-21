@@ -1,8 +1,8 @@
 extends StaticBody2D
 
+#interactable - needs Interact() func
 @export var chestName: String
 
-var playerInRange: bool = false
 @onready var sprite = $AnimatedSprite2D
 @onready var scrollTimer = $Timer
 @onready var scrollSprite = $Sprite2D
@@ -18,11 +18,10 @@ func _ready() -> void:
 	else:
 		sprite.play("open")
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Interact") and playerInRange:
-		if !opened:
+func Interact():
+	if !opened:
 			OpenChest()
-			
+
 func OpenChest():
 	sprite.play("open")
 	opened = true
