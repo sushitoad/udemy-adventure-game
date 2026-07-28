@@ -5,7 +5,6 @@ class_name Player
 
 @export var moveSpeed: float = 100
 @export var HP: int = 10
-@export var spawnPoints: PackedVector2Array
 @export var pushStrength: float = 80
 @export var attackKnockback: float = 150
 @export var acceleration: float = 10
@@ -18,12 +17,11 @@ var currentInteraction: Node2D
 signal player_died
 
 func _ready() -> void:
-	#position = SceneManager.spawnPoint
-	position = spawnPoints[SceneManager.spawnIndex]
+	position = SceneManager.spawnPoint
+	animSprite.play(SceneManager.spawnPlayerFacing)
 	UpdateTreasureLabel()
 	#connect UpdateTreasureLabel to all the chestOpened signals instead of using physics process
 	maxHP = SceneManager.playerCollectedHearts * 2
-	#SceneManager.playerCurrentHP = maxHP
 	updateHeartDisplay()
 	updatePlayerHP()
 	player_died.connect(%LevelMusic.stop)
@@ -83,7 +81,6 @@ func UpdateTreasureLabel():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
 		currentInteraction = body
-		print(currentInteraction)
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
@@ -114,6 +111,9 @@ func TakeDamage(damage: int):
 
 func Respawn():
 		SceneManager.playerCurrentHP = SceneManager.playerCollectedHearts * 2
+		#this line below is a test, don't do this in the player script
+		#I might need some death function that runs in the scene manager?
+		SceneManager.spawnPoint = SceneManager.activeShrinePosition
 		get_tree().call_deferred("reload_current_scene")
 
 func updatePlayerHP():

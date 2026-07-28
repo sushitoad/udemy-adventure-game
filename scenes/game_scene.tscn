@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b3o0pym0g0c15" path="res://art/Ninja Adventure - Asset Pack/Actor/Characters/OldMan3/Faceset.png" id="11_5ay1a"]
 [ext_resource type="PackedScene" uid="uid://cfwqmgx6bi6os" path="res://scenes/pause_menu.tscn" id="14_5ay1a"]
 [ext_resource type="PackedScene" uid="uid://btm8nrhm5w7sg" path="res://scenes/slime_enemy.tscn" id="17_mwyo0"]
+[ext_resource type="PackedScene" uid="uid://dl2guex8ef1ik" path="res://scenes/shrine.tscn" id="18_s76x2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk2rg"]
 texture = ExtResource("1_rurhu")
@@ -822,7 +823,6 @@ tile_set = SubResource("TileSet_utbpp")
 [node name="Player" parent="ObstacleLayer" unique_id=1895512488 instance=ExtResource("1_w5aja")]
 position = Vector2(-41, -85)
 motion_mode = 1
-spawnPoints = PackedVector2Array(-42, -84, 41, -166)
 
 [node name="Camera2D" type="Camera2D" parent="ObstacleLayer/Player" unique_id=1736375387]
 zoom = Vector2(4, 4)
@@ -869,11 +869,16 @@ position = Vector2(40, -173)
 [node name="SceneEntrance" parent="." unique_id=612436643 instance=ExtResource("9_utbpp")]
 position = Vector2(40, -181)
 sceneToLoad = "res://scenes/cave_scene.tscn"
+spawnPoint = Vector2(-16, 84)
+spawnPlayerFacing = "moveUp"
 
 [node name="PauseMenu" parent="." unique_id=630273121 instance=ExtResource("14_5ay1a")]
 
 [node name="SlimeEnemy" parent="." unique_id=1475877766 instance=ExtResource("17_mwyo0")]
-position = Vector2(59, -25)
+position = Vector2(204, -100)
+
+[node name="Shrine" parent="." unique_id=263744021 instance=ExtResource("18_s76x2")]
+position = Vector2(57, -23)
 
 [connection signal="pressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_unpressed"]

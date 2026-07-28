@@ -873,7 +873,6 @@ position = Vector2(-48, 65)
 [node name="Player" parent="." unique_id=1511201656 instance=ExtResource("1_5u6jg")]
 position = Vector2(-16, 70)
 motion_mode = 1
-spawnPoints = PackedVector2Array(-16, 70)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=492321045]
 zoom = Vector2(4, 4)
@@ -886,7 +885,7 @@ editor_draw_drag_margin = true
 position = Vector2(-16, 104)
 sceneToLoad = "res://scenes/game_scene.tscn"
 spawnPoint = Vector2(39, -169)
-spawnIndex = 1
+spawnPlayerFacing = "moveDown"
 
 [node name="PauseMenu" parent="." unique_id=1101034324 instance=ExtResource("11_6fm3r")]
 

@@ -1,7 +1,11 @@
 extends Node2D
 
 var spawnPoint: Vector2
-var spawnIndex: int = 0
+var spawnPlayerFacing: String
+#reference to the position the player should spawn in if dead
+var activeShrinePosition
+#reference to the scene from a packedscene array that the player should spawn into
+var shrineSceneIndex
 
 var playerCollectedHearts: int = 3
 

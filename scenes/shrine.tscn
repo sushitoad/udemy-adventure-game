@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dl2guex8ef1ik"]
+
+[ext_resource type="Script" uid="uid://doqqba8hpldxl" path="res://scripts/shrine.gd" id="1_34a3k"]
+[ext_resource type="Texture2D" uid="uid://cggow58o8bhx7" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetElement.png" id="1_byhlw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv5h0"]
+atlas = ExtResource("1_byhlw")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6nui"]
+size = Vector2(14, 12)
+
+[node name="Shrine" type="StaticBody2D" unique_id=263744021 groups=["interactable"]]
+script = ExtResource("1_34a3k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1464541850]
+texture = SubResource("AtlasTexture_tv5h0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=689890463]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_x6nui")
+
+[node name="SpawnPoint" type="Node2D" parent="." unique_id=576846597]
+position = Vector2(0, 14)
