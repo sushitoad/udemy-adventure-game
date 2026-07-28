@@ -2,7 +2,7 @@ extends Area2D
 
 @export var sceneToLoad: String
 @export var spawnPoint: Vector2
-##input the string for the move anim the player should have upon entering the new area
+##Input the string for the move anim the player should have upon entering the new area
 @export var spawnPlayerFacing: String
 
 

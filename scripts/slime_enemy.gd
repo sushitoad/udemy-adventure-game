@@ -48,6 +48,13 @@ func TakeDamage(damage: int, body: Node2D):
 	velocity += knockbackDirection * body.attackKnockback
 	if currentHP <= 0:
 		$DeathSound.play()
+	else:
+		$HurtSound.play()
+	var originalColor: Color = modulate
+	var whiteFlashColor: Color = Color(30.0, 30.0, 30.0, 1.0)
+	modulate = whiteFlashColor
+	await get_tree().create_timer(0.2).timeout
+	modulate = originalColor
 
 func _on_death_sound_finished() -> void:
 	call_deferred("queue_free")

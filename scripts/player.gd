@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 		if currentInteraction != null:
 			currentInteraction.Interact()
 		else:
+			#some sort of bug in the cave scene where sword doesn't show up to left and up
 			Attack()
 	move_and_slide()
 	
@@ -108,13 +109,19 @@ func TakeDamage(damage: int):
 		player_died.emit()
 		$DeathSound.play()
 	updatePlayerHP()
+	var whiteFlashColor: Color = Color(30, 30, 30)
+	var originalColor: Color = modulate
+	modulate = whiteFlashColor
+	await get_tree().create_timer(0.2).timeout
+	modulate = originalColor
 
 func Respawn():
-		SceneManager.playerCurrentHP = SceneManager.playerCollectedHearts * 2
-		#this line below is a test, don't do this in the player script
-		#I might need some death function that runs in the scene manager?
-		SceneManager.spawnPoint = SceneManager.activeShrinePosition
-		get_tree().call_deferred("reload_current_scene")
+	#this can basically just trigger RespawnAtCurrentShrine() in scene manager
+	SceneManager.playerCurrentHP = SceneManager.playerCollectedHearts * 2
+	#this line below is a test, don't do this in the player script
+	#I might need some death function that runs in the scene manager?
+	SceneManager.spawnPoint = SceneManager.activeShrinePosition
+	get_tree().call_deferred("reload_current_scene")
 
 func updatePlayerHP():
 	var hp: int = SceneManager.playerCurrentHP
