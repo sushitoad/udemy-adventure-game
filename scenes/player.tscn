@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bldlm1go10hkc" path="res://art/Ninja Adventure - Asset Pack/Audio/Sounds/Creature/Wings.wav" id="5_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://8lyb0bcw3sml" path="res://art/Ninja Adventure - Asset Pack/Items/Weapons/Sword2/Sprite.png" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://b64xxyfuojq7t" path="res://audio/Audio/Jingles/GameOver3.wav" id="8_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://cr048gsgcmwms" path="res://audio/Audio/Sounds/Whoosh & Slash/Slash.wav" id="10_y4r1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
 atlas = ExtResource("2_fjrip")
@@ -711,6 +712,11 @@ shape = SubResource("RectangleShape2D_fjrip")
 [node name="AttackTimer" type="Timer" parent="Sword" unique_id=1991406317]
 wait_time = 0.4
 one_shot = true
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="Sword" unique_id=1162740777]
+stream = ExtResource("10_y4r1p")
+volume_db = -9.0
+pitch_scale = 1.1
 
 [connection signal="body_entered" from="InteractArea2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractArea2D" to="." method="_on_area_2d_body_exited"]

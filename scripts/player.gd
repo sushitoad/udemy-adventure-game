@@ -154,6 +154,7 @@ func Attack():
 	attacking = true
 	$Sword.visible = true
 	$Sword/SwordArea2D.monitoring = true
+	$Sword/AttackSound.play()
 	$Sword/AttackTimer.start()
 	var playerAnim: String = $AnimatedSprite2D.animation
 	if playerAnim == "moveRight":

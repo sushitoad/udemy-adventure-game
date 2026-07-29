@@ -5,5 +5,5 @@ extends StaticBody2D
 
 
 func Interact():
-	print("this is a shrine")
+	$ActivateSound.play()
 	SceneManager.activeShrinePosition = $SpawnPoint.global_position

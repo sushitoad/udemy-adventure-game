@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://doqqba8hpldxl" path="res://scripts/shrine.gd" id="1_34a3k"]
 [ext_resource type="Texture2D" uid="uid://cggow58o8bhx7" path="res://art/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetElement.png" id="1_byhlw"]
+[ext_resource type="AudioStream" uid="uid://cc8ln28jwi05o" path="res://audio/Audio/Sounds/Bonus/Coin3.wav" id="3_c1ic8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tv5h0"]
 atlas = ExtResource("1_byhlw")
@@ -22,3 +23,8 @@ shape = SubResource("RectangleShape2D_x6nui")
 
 [node name="SpawnPoint" type="Node2D" parent="." unique_id=576846597]
 position = Vector2(0, 14)
+
+[node name="ActivateSound" type="AudioStreamPlayer2D" parent="." unique_id=1071977345]
+stream = ExtResource("3_c1ic8")
+volume_db = -6.0
+pitch_scale = 0.8
