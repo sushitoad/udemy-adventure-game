@@ -105,7 +105,7 @@ func TakeDamage(damage: int):
 	if SceneManager.playerCurrentHP <= 0:
 		$AnimatedSprite2D.stop()
 		$AnimatedSprite2D.play("death")
-		$AnimatedSprite2D.animation_finished.connect(Respawn)
+		$AnimatedSprite2D.animation_finished.connect(SceneManager.RespawnAtNearestShrine)
 		player_died.emit()
 		$DeathSound.play()
 	updatePlayerHP()
@@ -114,14 +114,6 @@ func TakeDamage(damage: int):
 	modulate = whiteFlashColor
 	await get_tree().create_timer(0.2).timeout
 	modulate = originalColor
-
-func Respawn():
-	#this can basically just trigger RespawnAtCurrentShrine() in scene manager
-	SceneManager.playerCurrentHP = SceneManager.playerCollectedHearts * 2
-	#this line below is a test, don't do this in the player script
-	#I might need some death function that runs in the scene manager?
-	SceneManager.spawnPoint = SceneManager.activeShrinePosition
-	get_tree().call_deferred("reload_current_scene")
 
 func updatePlayerHP():
 	var hp: int = SceneManager.playerCurrentHP

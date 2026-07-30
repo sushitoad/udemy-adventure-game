@@ -879,6 +879,7 @@ position = Vector2(204, -100)
 
 [node name="Shrine" parent="." unique_id=263744021 instance=ExtResource("18_s76x2")]
 position = Vector2(57, -23)
+spawnFacing = "moveDown"
 
 [connection signal="pressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="locked_door" method="_on_puzzle_button_unpressed"]
