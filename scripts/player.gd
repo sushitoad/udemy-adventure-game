@@ -92,7 +92,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		TakeDamage(1)
+		if !body.isDying:
+			TakeDamage(1)
 		if SceneManager.playerCurrentHP <= 0:
 			body.ResetTarget()
 		var distanceToPlayer: Vector2 = global_position - body.global_position
@@ -104,6 +105,7 @@ func TakeDamage(damage: int):
 	$HurtSound.play()
 	if SceneManager.playerCurrentHP <= 0:
 		$AnimatedSprite2D.stop()
+		modulate = Color(1, 1, 1, 1)
 		$AnimatedSprite2D.play("death")
 		$AnimatedSprite2D.animation_finished.connect(SceneManager.RespawnAtNearestShrine)
 		player_died.emit()

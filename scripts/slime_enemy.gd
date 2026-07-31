@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var attackKnockback: float = 100
 var currentHP: int
 var target: Node2D
+#player script now touches isDying when it decides if it should take damage
+var isDying = false
 
 @onready var animSprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var acceleration: float = 5
@@ -17,7 +19,8 @@ func _physics_process(delta: float) -> void:
 		chaseTarget()
 	animateEnemy()
 	
-	move_and_slide()
+	if !isDying:
+		move_and_slide()
 
 func chaseTarget():
 	var distance: Vector2 = (target.global_position - global_position).normalized()
@@ -47,16 +50,23 @@ func TakeDamage(damage: int, body: Node2D):
 	var knockbackDirection: Vector2 = distanceToEnemy.normalized()
 	velocity += knockbackDirection * body.attackKnockback
 	if currentHP <= 0:
-		$DeathSound.play()
+		Die()
 	else:
 		$HurtSound.play()
-	var originalColor: Color = modulate
-	var whiteFlashColor: Color = Color(30.0, 30.0, 30.0, 1.0)
-	modulate = whiteFlashColor
-	await get_tree().create_timer(0.2).timeout
-	modulate = originalColor
+		var originalColor: Color = modulate
+		var whiteFlashColor: Color = Color(30.0, 30.0, 30.0, 1.0)
+		modulate = whiteFlashColor
+		await get_tree().create_timer(0.2).timeout
+		modulate = originalColor
 
-func _on_death_sound_finished() -> void:
+func Die():
+	isDying = true
+	velocity = Vector2.ZERO
+	$AnimatedSprite2D.modulate = Color(1, 1, 1, 0)
+	modulate = Color.WHITE
+	$DeathSound.play()
+	$DeathParticles.emitting = true
+	await get_tree().create_timer(1).timeout
 	call_deferred("queue_free")
 
 func _on_los_area_2d_body_entered(body: Node2D) -> void:
